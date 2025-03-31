@@ -30,6 +30,7 @@ from invenio_records_rest.views import \
 from invenio_rest import ContentNegotiatedMethodView
 from invenio_db import db
 from invenio_rest.views import create_api_errorhandler
+from weko_admin.utils import remove_weko2_special_character
 from weko_deposit.api import WekoRecord
 from weko_records.serializers import citeproc_v1
 
@@ -141,7 +142,7 @@ class WekoRecordsCitesResource(ContentNegotiatedMethodView):
             record = WekoRecord.get_record(pid.object_uuid)
             result = citeproc_v1.serialize(pid, record, style=style,
                                            locale=locale)
-            result = escape_str(result)
+            result = remove_weko2_special_character(result)
             return make_response(jsonify(result), 200)
         except Exception:
             current_app.logger.exception(

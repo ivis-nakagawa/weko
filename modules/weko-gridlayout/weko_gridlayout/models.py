@@ -409,6 +409,8 @@ class WidgetDesignSetting(db.Model):
         query_result = cls.query.filter_by(
             repository_id=str(repository_id)).one_or_none()
         data = {}
+        print(f"query_result: {query_result}")
+        print(f"repository_id: {repository_id}")
         if query_result is not None:
             data['repository_id'] = query_result.repository_id
             data['settings'] = query_result.settings

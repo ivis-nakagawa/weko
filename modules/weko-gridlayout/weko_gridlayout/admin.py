@@ -347,6 +347,8 @@ class WidgetSettingView(ModelView):
         else:
             template = self.details_template
 
+        print(f"=====================================================")
+        print(f"template: {template}")
         return self.render(template,
                            model=model,
                            details_columns=self._details_columns,

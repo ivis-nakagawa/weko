@@ -38,7 +38,7 @@
   {% set searchOptions = config['WEKO_ADMIN_SEARCH_OPTIONS'] %}
   {% set currentLanguage = current_i18n.language %}
 <div id="search_management" class="container-fluid table-responsive">
-  <div ng-init="initData('{{ setting_data }}')"
+  <div ng-init="initData({{ setting_data }})"
        ng-controller="searchManagementCtrl">
     <div class="row">
       <div id="alerts"></div>

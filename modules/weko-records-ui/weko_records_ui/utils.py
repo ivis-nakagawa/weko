@@ -45,7 +45,7 @@ from invenio_records.models import RecordMetadata
 from lxml import etree
 from passlib.handlers.oracle import oracle10
 from weko_admin.models import AdminSettings
-from weko_admin.utils import UsageReport, get_restricted_access
+from weko_admin.utils import UsageReport, escape_filename, get_restricted_access
 from weko_deposit.api import WekoDeposit, WekoRecord
 from weko_records.api import FeedbackMailList, ItemTypes, Mapping
 from weko_records.serializers.utils import get_mapping
@@ -936,7 +936,7 @@ def get_file_info_list(record, item_type=None):
                     # Check show preview area.
                     base_url = "/record/{}/files/{}".format(
                         record.get('recid'),
-                        f.get("filename")
+                        escape_filename(f.get("filename"))
                     )
                     url = f.get("url", {}).get("url", '')
                     if url and f["version_id"]:

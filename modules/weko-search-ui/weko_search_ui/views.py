@@ -34,7 +34,11 @@ from invenio_pidstore.models import PIDStatus, PersistentIdentifier
 from invenio_i18n.ext import current_i18n
 from sqlalchemy.sql.expression import func
 from weko_admin.models import AdminSettings
-from weko_admin.utils import get_search_setting
+from weko_admin.utils import (
+    get_search_setting,
+    remove_weko2_special_character,
+    convert_newline
+)
 from weko_gridlayout.utils import (
     get_widget_design_page_with_main,
     main_design_has_main_widget,
@@ -381,13 +385,17 @@ def get_path_name_dict(path_str=""):
         idx_name = index.index_name
         idx_name_en = index.index_name_english
         if current_i18n.language == "ja" and idx_name:
-            path_name_dict[path] = idx_name.replace("\n", r"<br\>").replace(
-                "&EMPTY&", ""
-            )
+            idx_name = convert_newline(idx_name)
+            path_name_dict[path] = remove_weko2_special_character(idx_name)
+            # path_name_dict[path] = idx_name.replace("\n", r"<br\>").replace(
+            #     "&EMPTY&", ""
+            # )
         else:
-            path_name_dict[path] = idx_name_en.replace("\n", r"<br\>").replace(
-                "&EMPTY&", ""
-            )
+            idx_name_en = convert_newline(idx_name_en)
+            path_name_dict[path] = remove_weko2_special_character(idx_name_en)
+            # path_name_dict[path] = idx_name_en.replace("\n", r"<br\>").replace(
+            #     "&EMPTY&", ""
+            # )
     return jsonify(path_name_dict)
 
 

@@ -1,0 +1,60 @@
+============================= test session starts ==============================
+platform linux -- Python 3.6.15, pytest-6.1.2, py-1.11.0, pluggy-0.13.1 -- /code/modules/weko-workflow/.tox/c1/bin/python
+cachedir: .pytest_cache
+rootdir: /code/modules/weko-workflow
+plugins: celery-4.4.4, flask-0.15.1, cov-4.0.0, mock-3.6.1, invenio-1.3.1
+collecting ... collected 8 items
+
+tests/test_api.py::test_Flow_action PASSED
+tests/test_api.py::test_Flow_get_flow_action_list PASSED
+tests/test_api.py::test_WorkActivity_filter_by_date PASSED
+tests/test_api.py::test_WorkActivity_get_all_activity_list PASSED
+tests/test_api.py::test_WorkActivity_get_activity_index_search ============================== WorkActivity.get_activity_index_search: 1 =================================
+================================== check_authority_action ==================================
+activity_id : 1
+action_id : 1
+contain_login_item_application : 1
+action_order : 0
+--------------------------------------------
+PASSED
+tests/test_api.py::test_WorkActivity_upt_activity_detail PASSED
+tests/test_api.py::test_WorkActivity_get_corresponding_usage_activities PASSED
+tests/test_api.py::test_WorkActivity_get_activity_list_todo PASSED
+
+=============================== warnings summary ===============================
+.tox/c1/lib/python3.6/site-packages/past/translation/__init__.py:35
+  /code/modules/weko-workflow/.tox/c1/lib/python3.6/site-packages/past/translation/__init__.py:35: DeprecationWarning: the imp module is deprecated in favour of importlib; see the module's documentation for alternative uses
+    import imp
+
+tests/test_api.py::test_Flow_action
+tests/test_api.py::test_Flow_get_flow_action_list
+tests/test_api.py::test_WorkActivity_filter_by_date
+tests/test_api.py::test_WorkActivity_get_all_activity_list
+tests/test_api.py::test_WorkActivity_get_activity_index_search
+tests/test_api.py::test_WorkActivity_upt_activity_detail
+tests/test_api.py::test_WorkActivity_get_corresponding_usage_activities
+tests/test_api.py::test_WorkActivity_get_activity_list_todo
+  /code/modules/weko-workflow/.tox/c1/lib/python3.6/site-packages/flask_caching/__init__.py:241: DeprecationWarning: Using the initialization functions in flask_caching.backend is deprecated.  Use the a full path to backend classes directly.
+    category=DeprecationWarning,
+
+tests/test_api.py: 208 warnings
+  /code/modules/weko-workflow/.tox/c1/lib/python3.6/site-packages/invenio_admin/ext.py:73: PendingDeprecationWarning: Usage of model and modelview kwargs are deprecated in favor of view_class, args and kwargs.
+    PendingDeprecationWarning
+
+tests/test_api.py::test_Flow_action
+tests/test_api.py::test_Flow_get_flow_action_list
+tests/test_api.py::test_WorkActivity_filter_by_date
+tests/test_api.py::test_WorkActivity_get_all_activity_list
+tests/test_api.py::test_WorkActivity_get_activity_index_search
+tests/test_api.py::test_WorkActivity_upt_activity_detail
+tests/test_api.py::test_WorkActivity_get_corresponding_usage_activities
+tests/test_api.py::test_WorkActivity_get_activity_list_todo
+  /code/modules/weko-workflow/.tox/c1/lib/python3.6/site-packages/flask_admin/model/base.py:1416: UserWarning: Fields missing from ruleset: created_userId,created_date,updated_userId,updated_date
+    warnings.warn(text)
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+
+---------- coverage: platform linux, python 3.6.15-final-0 -----------
+Coverage HTML written to dir htmlcov
+
+======================= 8 passed, 225 warnings in 39.63s =======================

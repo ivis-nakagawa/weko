@@ -41,7 +41,7 @@ def test_record_schema_csljson(app, db, db_index, render, form, mapping, hit, li
                 'subitem_date_type': 'Available'
             },
             {
-                'subitem_date_value': '2021-10-26',
+                'subitem_date_value': '[1992]',
                 'subitem_date_type': 'Issued'
             }
         ],

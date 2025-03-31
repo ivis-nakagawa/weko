@@ -23,15 +23,20 @@ import csv
 import json
 import math
 import os
+import re
+import unicodedata
 import zipfile
+from urllib.parse import quote_plus
 from datetime import datetime, timedelta
 from io import BytesIO, StringIO
 from typing import Dict, Optional, Tuple, Union
 
+import bleach
 import redis
 from redis import sentinel
+import regex
 import requests
-from flask import current_app, request
+from flask import current_app, request, Markup
 from flask_babelex import gettext as __
 from flask_babelex import lazy_gettext as _
 from invenio_accounts.models import Role, userrole
@@ -2501,3 +2506,211 @@ def _elasticsearch_remake_item_index(index_name):
     current_app.logger.info(' END elasticsearch import from records_metadata')
     
     return returnlist
+
+
+def remove_control_characters(value):
+    """入力された文字列から制御文字を削除する
+
+    処理時間の観点から、
+    ・200文字未満の場合は一文字ずつ
+    ・200文字以上の場合は文字列まとめて
+    処理を行う
+
+    Args:
+        value (str): 入力された文字列
+
+    Returns:
+        str: 制御文字が削除された文字列
+    """
+    if isinstance(value, str):
+        if len(value) < 200:
+            for char in value:
+                if unicodedata.category(char) == 'Cc' and char not in ['\t', '\n', '\r']:
+                    value = value.replace(char, '')
+        else:
+            value = ''.join(regex.findall(r'[\P{Cc}\t\n\r]+', value))
+    return value
+
+
+def sanitize_input_data(data):
+    """入力されたデータから制御文字を削除する
+
+    Args:
+        data (any): 入力されたデータ
+
+    Returns:
+        any: 制御文字が削除されたデータ
+    """
+    result = ''
+    if isinstance(data, list):
+        return [sanitize_input_data(i) for i in data]
+    elif isinstance(data, dict):
+        return {k: sanitize_input_data(v) for k, v in data.items()}
+    elif isinstance(data, str):
+        return remove_control_characters(data)
+    return data
+
+
+def remove_weko2_special_character(value):
+    """文字列からWEKO2の特殊文字(&EMPTY&)を削除する
+
+    Args:
+        s (str): 処理対象の文字列
+
+    Returns:
+        str: 処理された文字列
+    """
+    if isinstance(value, str):
+        value = value.strip()
+        pattern = r"(^(&EMPTY&,|,&EMPTY&)|(&EMPTY&,|,&EMPTY&)$|&EMPTY&)"
+        value = re.sub(pattern, "", value)
+    return value if value != "," else ""
+
+
+def remove_weko2_special_characters(data):
+    """データからWEKO2の特殊文字(&EMPTY&)を削除する
+
+    Args:
+        data (any): 処理対象のデータ
+
+    Returns:
+        any: 処理されたデータ
+    """
+    if isinstance(data, list):
+        return [remove_weko2_special_characters(i) for i in data]
+    elif isinstance(data, dict):
+        return {k: remove_weko2_special_characters(v) for k, v in data.items()}
+    elif isinstance(data, str):
+        return remove_weko2_special_character(data)
+    return data
+
+
+def sanitize_html_string(
+        value,
+        allow_tags=[],
+        allow_attributes={},
+        strip=True
+    ):
+    """bleachを使用してHTMLをサニタイズする
+
+    Args:
+        value (str): HTML文字列
+        allow_tags (list): 許可するHTMLタグのリスト
+        allow_attributes (dict): 許可するHTML属性の辞書
+        strip (bool): サニタイズ後にタグを削除するかどうか
+
+    Returns:
+        str: サニタイズされたHTML文字列
+    """
+
+    if isinstance(value, str):
+        value = bleach.clean(
+            value,
+            tags=allow_tags,
+            attributes=allow_attributes,
+            strip=strip
+        ).strip()
+    return value
+
+
+def escape_html_string(value):
+    """Markupを使用してHTMLをエスケープする
+
+    Args:
+        value (str): HTML文字列
+
+    Returns:
+        str: エスケープされたHTML文字列
+    """
+    if isinstance(value, str):
+        value = Markup.escape(value)
+    return value
+
+
+def convert_newline(value, to_html=True):
+    """文字列から改行文字を変換する
+
+    Args:
+        value (str): 処理対象の文字列
+        to_html (bool): HTMLに変換するかどうか
+                        True: 改行コードを<br>に変換
+                        False: <br>を改行コードに変換
+
+    Returns:
+        str: 変換された文字列
+    """
+    if isinstance(value, str):
+        if to_html:
+            value = value \
+                .replace("\r\n", "<br>") \
+                .replace("\r", "<br>") \
+                .replace("\n", "<br>")
+        else:
+            value = value \
+                .replace("<br>", "\n") \
+                .replace("<br/>", "\n") \
+                .replace("<br\>", "\n")
+    return value
+
+
+def convert_newlines(data, to_html=True):
+    """データから改行文字を変換する
+
+    Args:
+        data (any): 処理対象のデータ
+        to_html (bool): HTMLに変換するかどうか
+                        True: 改行コードを<br>に変換
+                        False: <br>を改行コードに変換
+
+    Returns:
+        any: 変換されたデータ
+    """
+    if isinstance(data, list):
+        return [convert_newlines(i, to_html) for i in data]
+    elif isinstance(data, dict):
+        return {k: convert_newlines(v, to_html) for k, v in data.items()}
+    elif isinstance(data, str):
+        return convert_newline(data, to_html)
+    return data
+
+
+def escape_double_curly_braces(data):
+    """二重中括弧のエスケープ
+
+    データに「{{}}」が含まれるとエラーが発生する問題の対策(#46627参照)
+    ここで入れたゼロ幅スペースは画面出力前に除去する
+    (weko_theme/static/js/weko_theme/escape.js::replaceZeroWidthSpace を使用して除去)
+
+    Args:
+        value (any): エスケープするデータ
+
+    Returns:
+        any: エスケープ後のデータ
+    """
+    if isinstance(data, list):
+        return [escape_double_curly_braces(i) for i in data]
+    elif isinstance(data, dict):
+        return {k: escape_double_curly_braces(v) for k, v in data.items()}
+    elif isinstance(data, str):
+        return data.replace("{{", "{\u200b{").replace("}}", "}\u200b}")
+    return data
+
+
+def escape_filename(value):
+    """ファイル名のエスケープ
+
+    ファイル名に「#」が含まれるとURLが途切れる問題の対策(#48298参照)
+
+    Args:
+        value (str): エスケープするファイル名
+
+    Returns:
+        str: エスケープ後のファイル名
+    """
+    print(f"======================== escape_filename ============================")
+    print(f"before escape_filename: {value}")
+    print(f"type(value): {type(value)}")
+    if isinstance(value, str):
+        value = quote_plus(value)
+    print(f"after escape_filename : {value}")
+    return value

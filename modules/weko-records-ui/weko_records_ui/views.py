@@ -47,7 +47,8 @@ from invenio_records_ui.utils import obj_or_import_string
 from lxml import etree
 from weko_accounts.views import _redirect_method
 from weko_admin.models import AdminSettings
-from weko_admin.utils import get_search_setting
+from weko_admin.utils import escape_html_string, convert_newline, \
+    get_search_setting, remove_weko2_special_character
 from weko_deposit.api import WekoRecord
 from weko_deposit.pidstore import get_record_without_version
 from weko_index_tree.api import Indexes
@@ -57,7 +58,7 @@ from weko_records.api import ItemLink, Mapping, ItemTypes
 from weko_records.serializers import citeproc_v1
 from weko_records.serializers.utils import get_mapping
 from weko_records.utils import custom_record_medata_for_export, \
-    remove_weko2_special_character, selected_value_by_language
+    selected_value_by_language
 from weko_search_ui.api import get_search_detail_keyword
 from weko_schema_ui.models import PublishStatus
 from weko_user_profiles.models import UserProfile
@@ -1043,8 +1044,8 @@ def escape_str(s):
     """
     if s:
         s = remove_weko2_special_character(s)
-        s = str(escape(s))
-        s = escape_newline(s)
+        s = escape_html_string(s)
+        s = convert_newline(s)
     return s
 
 

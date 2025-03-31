@@ -51,10 +51,13 @@ def preview(pid, record, template=None, **kwargs):
         **kwargs (dict): 
     """
     # Get file from record
+    print(f"========================================================================================")
+    print(f"request.view_args.get('filename', request.args.get('filename', type=str)) : {request.view_args.get('filename', request.args.get('filename', type=str))}")
     fileobj = current_previewer.record_file_factory(
         pid, record, request.view_args.get(
             'filename', request.args.get('filename', type=str))
     )
+    print(f"fileobj : {fileobj}")
     if not fileobj:
         abort(404)
 

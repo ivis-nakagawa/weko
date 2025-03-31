@@ -861,9 +861,23 @@ class SchemaTree:
                 return clean
 
             vlst = []
+            print(f"-========================================================")
+            print(f"mpdic: {mpdic}")
             for ky, vl in mpdic.items():
                 vlc = copy.deepcopy(vl)
                 for node_result, node_result_key in get_key_value(vlc):
+                    if node_result_key == 'URI':
+                        print(f"=========================================")
+                        print(f"ky: {ky}")
+                        print(f"------------------------------------")
+                        print(f"vl: {vl}")
+                        print(f"------------------------------------")
+                        print(f"node_result: {node_result}")
+                        print(f"------------------------------------")
+                        print(f"node_result_key: {node_result_key}")
+                        print(f"------------------------------------")
+                        print(f"atr_vm: {atr_vm}")
+                        print(f"------------------------------------")
                     if node_result_key == self._atr:
                         get_atr_value_lst(node_result, atr_vm, remain_keys)
                     else:
@@ -901,6 +915,8 @@ class SchemaTree:
 
             for vlist_item in vlst:
                 attr_of_parent_item = {}
+                print(f"=========================================")
+                print(f"vlist_item: {vlist_item}")
                 for k, v in vlist_item.items():
                     # get attribute of parent Node if any
                     if v is not None and self._atr in v:
@@ -1202,6 +1218,10 @@ class SchemaTree:
                             for altt in atr:
                                 if altt:
                                     atrt = get_atr_list(altt)
+                                    if val[0] and isinstance(val[0], list) and val[0][0] and val[0][0] == 'URI':
+                                        print(f"===================================")
+                                        print(f"node: {node}")
+                                    print(f"index: {index}")
                                     clone_val, clone_atr = recorrect_node(
                                         val[index],
                                         atrt,
@@ -1367,6 +1387,9 @@ class SchemaTree:
             remove_lst = []
             none_lst = []
             current_lst = []
+            print(f"----------------------------------- reccorrect_node -----------------------------------")
+            print(f"val: {val}")
+            print(f"attr: {attr}")
             for i in range(len(val)):
                 att_lang = self._atr_lang in attr[i].keys()
                 if att_lang and attr[i].get(

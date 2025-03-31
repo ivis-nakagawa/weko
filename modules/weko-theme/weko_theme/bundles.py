@@ -101,9 +101,15 @@ js_detail_search = Bundle(
     output="gen/weko_detail_search.%(version)s.js",
 )
 
+js_weko_lib = Bundle(
+    'js/weko_theme/lodash.js',
+    'js/weko_theme/test.js',
+    filters='jsmin',
+    output="gen/weko_lib.%(version)s.js",
+)
 
 js_widget_lib = Bundle(
-    'js/weko_theme/lodash.js',
+    js_weko_lib,
     'js/weko_theme/gridstack.js',
     'js/weko_theme/ResizeSensor.js',
     filters='jsmin',

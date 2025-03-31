@@ -197,6 +197,7 @@ def post_service_document():
 
     check_result = check_import_items(file, False)
     item = check_result.get('list_record')[0] if check_result.get('list_record') else None
+    # ここでitemに対してsanitize_input_dataを実行する？
     if check_result.get('error') or not item or item.get('errors'):
         errorType = None
         check_result_msg = ''

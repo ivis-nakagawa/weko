@@ -134,18 +134,37 @@ function check_detail(id) {
     $.getJSON(logs_url, function(data) {
         $('#myModal').modal('show');
         let html = '';
-        html += '<table class="table table-hover table-bordered searchable">';
-        html += '<tr><td><b>' + _('Repository Name') + '</b></td><td>' + data.repository_name + '</td></tr>';
-        html += '<tr><td><b>' + _('Base Url') + '</b></td><td>' + data.base_url + '</td></tr>';
-        html += '<tr><td><b>' + _('From Date') + '</b></td><td>' + data.from_date + '</td></tr>';
-        html += '<tr><td><b>' + _('Until Date') + '</b></td><td>' + data.until_date + '</td></tr>';
-        html += '<tr><td><b>' + _('Set Spec') + '</b></td><td>' + data.set_spec + '</td></tr>';
-        html += '<tr><td><b>' + _('Metadata Prefix') + '</b></td><td>' + data.metadata_prefix + '</td></tr>';
-        html += '<tr><td><b>' + _('Target Index Name') + '</b></td><td>' + data.target_index + '</td></tr>';
-        html += '<tr><td><b>' + _('Update Style') + '</b></td><td>' + data.update_style + '</td></tr>';
-        html += '<tr><td><b>' + _('Auto Distribution') + '</b></td><td>' + data.auto_distribution + '</td></tr>';
-        html += '</table>';
-        $('.modal-body').html(html);
+        //html += '<table class="table table-hover table-bordered searchable">';
+        //html += '<tr><td><b>' + _('Repository Name') + '</b></td><td>' + data.repository_name + '</td></tr>';
+        //html += '<tr><td><b>' + _('Base Url') + '</b></td><td>' + data.base_url + '</td></tr>';
+        //html += '<tr><td><b>' + _('From Date') + '</b></td><td>' + data.from_date + '</td></tr>';
+        //html += '<tr><td><b>' + _('Until Date') + '</b></td><td>' + data.until_date + '</td></tr>';
+        //html += '<tr><td><b>' + _('Set Spec') + '</b></td><td>' + data.set_spec + '</td></tr>';
+        //html += '<tr><td><b>' + _('Metadata Prefix') + '</b></td><td>' + data.metadata_prefix + '</td></tr>';
+        //html += '<tr><td><b>' + _('Target Index Name') + '</b></td><td>' + data.target_index + '</td></tr>';
+        //html += '<tr><td><b>' + _('Update Style') + '</b></td><td>' + data.update_style + '</td></tr>';
+        //html += '<tr><td><b>' + _('Auto Distribution') + '</b></td><td>' + data.auto_distribution + '</td></tr>';
+        //html += '</table>';
+        //$('.modal-body').html(html);
+        let table = $('<table>').addClass('table table-hover table-bordered searchable');
+        let rows = [
+            { label: 'Repository Name', value: data.repository_name },
+            { label: 'Base Url', value: data.base_url },
+            { label: 'From Date', value: data.from_date },
+            { label: 'Until Date', value: data.until_date },
+            { label: 'Set Spec', value: data.set_spec },
+            { label: 'Metadata Prefix', value: data.metadata_prefix },
+            { label: 'Target Index Name', value: data.target_index },
+            { label: 'Update Style', value: data.update_style },
+            { label: 'Auto Distribution', value: data.auto_distribution }
+        ];
+        rows.forEach(function(row) {
+            let tr = $('<tr>');
+            tr.append($('<td>').html('<b>' + _(row.label) + '</b>'));
+            tr.append($('<td>').text(row.value));
+            table.append(tr);
+        });
+        $('.modal-body').html(table);
     })
 }
 

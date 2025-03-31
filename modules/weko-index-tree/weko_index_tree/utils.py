@@ -37,7 +37,7 @@ from invenio_i18n.ext import current_i18n
 from invenio_pidstore.models import PersistentIdentifier
 from invenio_search import RecordsSearch
 from simplekv.memory.redisstore import RedisStore
-from weko_admin.utils import is_exists_key_in_redis
+from weko_admin.utils import convert_newline, is_exists_key_in_redis, remove_weko2_special_character
 from weko_groups.models import Group
 from weko_redis.redis import RedisConnection
 from weko_schema_ui.models import PublishStatus
@@ -137,12 +137,15 @@ def get_tree_json(index_list, root_id):
     def generate_index_dict(index_element, is_root):
         """Formats an index_element, which is a tuple, into a nicely formatted dictionary."""
         index_dict = index_element._asdict()
-        index_name = str(index_element.name).replace("&EMPTY&", "")
-        index_name = Markup.escape(index_name)
-        index_name = index_name.replace("\n", r"<br\>")
-        
-        index_link_name = str(index_element.link_name).replace("&EMPTY&", "")
-        index_link_name = index_link_name.replace("\n", r"<br\>")
+        index_name = remove_weko2_special_character(
+            str(index_element.name)
+        )
+        index_name = convert_newline(index_name)
+
+        index_link_name = remove_weko2_special_character(
+            str(index_element.link_name)
+        )
+        index_link_name = convert_newline(index_name)
 
         if not is_root:
             pid = str(index_element.pid)

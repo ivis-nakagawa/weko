@@ -24,6 +24,12 @@
     {{ site_info() }}
 {%- endblock header %}
 {%- block page_body scoped %}
+{%- block javascript %}
+{{ super() }}
+{% assets "weko_theme_js_weko_lib" %}
+  <script src="{{ ASSET_URL }}"></script>
+{% endassets %}
+{%- endblock javascript %}
 <div class="container">
   <div class="row">
       <div class="col-sm-3 col-md-3 col-pad-left-0">

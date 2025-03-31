@@ -144,7 +144,7 @@ $(document).ready(function () {
           $('#locked_msg').show()
           var msg = $('#locked_msg').text();
           if (result.locked_by_username) {
-            msg = msg.replace('{}', result.locked_by_username);
+            msg = msg.replace('{}', _.escape(result.locked_by_username));
           } else {
             msg = msg.replace(' ({})', '');
             msg = msg.replace('（{}）', '');

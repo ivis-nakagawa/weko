@@ -187,6 +187,8 @@ class RecordSchemaCSLJSON(Schema):
             format = "%Y"
         else:
             raise ValidationError("Incorrect format")
+        print(f"=============================================================================================================================")
+        print(f"datacite:date metadata: {metadata}")
         metadata = datetime.strptime(metadata, format)
         date = from_isodate(metadata)
         date_parts = [[date.year, date.month, date.day]]

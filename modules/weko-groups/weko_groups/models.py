@@ -34,6 +34,7 @@ from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy.sql.expression import asc, desc
 from sqlalchemy_utils import generic_relationship
 from sqlalchemy_utils.types.choice import ChoiceType
+from weko_admin.utils import escape_html_string
 
 from .widgets import RadioGroupWidget
 
@@ -539,27 +540,12 @@ class Group(db.Model):
         :returns: Number of memberships.
         """
         return Membership.query_by_group(self.get_id()).count()
-    
-    def _escape_value(self,text):
-        html_escape = {
-            "&": "&amp;",
-            '"': "&quot;",
-            "'": "&apos;",
-            ">": "&gt;",
-            "<": "&lt;",
-        }
-        _text = text
-        try:
-            for key, value in html_escape.items():
-                _text = _text.replace(key, value)
-        except Exception as e:
-            current_app.logger.debug(e)
 
-        return _text
     @property
     def escape_name(self):
-        return self._escape_value(self.name)
-    
+        # MarkupオブジェクトのままだとManageのHTMLが適用されないため、strに変換
+        return str(escape_html_string(self.name))
+
 
 class Membership(db.Model):
     """Represent a users membership of a group."""

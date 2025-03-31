@@ -367,9 +367,9 @@ $(document).ready(function () {
               page_global.sub_itemtype_list.forEach(function (element) {
                 let display_name = element[1].length > 0 ? element[1] : $('#sub-item-type-lists-label').text();
                 if (element[0].endsWith(sub_val)) {
-                  options += '<option value="' + element[0] + '" selected>' + display_name + '</option>';
+                  options += '<option value="' + element[0] + '" selected>' + _.escape(display_name) + '</option>';
                 } else {
-                  options += '<option value="' + element[0] + '">' + display_name + '</option>';
+                  options += '<option value="' + element[0] + '">' + _.escape(display_name) + '</option>';
                 }
               });
               find_select_sub_itemtype_list.append(options);
@@ -388,9 +388,9 @@ $(document).ready(function () {
             page_global.sub_itemtype_list.forEach(function (element) {
               let display_name = element[1].length > 0 ? element[1] : $('#sub-item-type-lists-label').text();
               if (element[0].endsWith(value)) {
-                options += '<option value="' + element[0] + '" selected>' + display_name + '</option>';
+                options += '<option value="' + element[0] + '" selected>' + _.escape(display_name) + '</option>';
               } else {
-                options += '<option value="' + element[0] + '">' + display_name + '</option>';
+                options += '<option value="' + element[0] + '">' + _.escape(display_name) + '</option>';
               }
             });
             find_select_sub_itemtype_list.append(options);
@@ -424,7 +424,7 @@ $(document).ready(function () {
         let options = "";
         page_global.sub_itemtype_list.forEach(function(element){
           let display_name = element[1].length>0?element[1]:$('#sub-item-type-lists-label').text();
-          options += '<option value="'+element[0]+'">'+display_name+'</option>';
+          options += '<option value="'+element[0]+'">' + _.escape(display_name) + '</option>';
         });
         find_select_sub_itemtype_list.append(options);
         if(page_global.sub_itemtype_list.length == 1) {
@@ -597,7 +597,7 @@ $(document).ready(function () {
       let options = "";
       page_global.sub_itemtype_list.forEach(function(element){
         let display_name = element[1].length>0?element[1]:$('#sub-item-type-lists-label').text();
-        options += '<option value="'+element[0]+'">'+display_name+'</option>';
+        options += '<option value="'+element[0]+'">' + _.escape(display_name) + '</option>';
       });
       find_select_sub_itemtype_list.append(options);
     }

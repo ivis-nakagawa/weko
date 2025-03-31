@@ -11,6 +11,10 @@
 
   function WekoRecordsCtrl($scope, $rootScope, $modal, InvenioRecordsAPI){
     $rootScope.$on('invenio.records.loading.stop', function (ev) {
+      // データに"{{}}"が含まれるとエラーが発生する問題の対策(#46627)
+      $rootScope.recordsVM.invenioRecordsModel = replaceZeroWidthSpace(
+        $rootScope.recordsVM.invenioRecordsModel
+      );
       setTimeout(function () {
         let model = $rootScope.recordsVM.invenioRecordsModel;
         CustomBSDatePicker.setDataFromFieldToModel(model, true);

@@ -206,7 +206,10 @@ def get_search_detail_keyword(str):
         if k_v.get("check_val"):
             for val in k_v.get("check_val"):
                 if val.get("contents"):
-                    val["contents"] = escape_str(_(val["contents"]))
+                    val["contents"] = unicodedata.normalize(
+                        "NFKD",
+                        _(val["contents"])
+                    )
 
     key_options["condition_setting"] = options
 
@@ -253,22 +256,22 @@ def get_childinfo(index_tree, result_list=[], parename=""):
 
     return result_list
 
-def escape_str(s):
-    """remove escape character from string
+# def escape_str(s):
+#     """remove escape character from string
 
-    :argument
-        s -- {str} A string removes the escape character.
-    :return
-        s -- {str} string removing escape character.
-    """
+#     :argument
+#         s -- {str} A string removes the escape character.
+#     :return
+#         s -- {str} string removing escape character.
+#     """
 
-    s = unicodedata.normalize("NFKD", s)
-    s = repr(markupsafe.escape(s))[8:-2]
+#     s = unicodedata.normalize("NFKD", s)
+#     s = repr(markupsafe.escape(s))[8:-2]
 
-    #s = repr(s)
-    #if 'Markup' == s[:6]:
-    #    s = s[8:-2]
-    #else:
-    #    s = s[1:-1]
+#     #s = repr(s)
+#     #if 'Markup' == s[:6]:
+#     #    s = s[8:-2]
+#     #else:
+#     #    s = s[1:-1]
 
-    return s
+#     return s

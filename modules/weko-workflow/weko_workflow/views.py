@@ -46,6 +46,7 @@ from flask import Response, Blueprint, abort, current_app, has_request_context, 
 from flask_babelex import gettext as _
 from flask_login import current_user, login_required
 from weko_admin.api import validate_csrf_header
+from weko_admin.utils import escape_double_curly_braces
 from flask_wtf import FlaskForm
 from invenio_accounts.models import Role, User, userrole
 from invenio_db import db
@@ -440,6 +441,11 @@ def new_activity():
     # Get the design for widget rendering
     page, render_widgets = get_design_layout(
         community_id or current_app.config['WEKO_THEME_DEFAULT_COMMUNITY'])
+
+    # I18n item_type_name and flow_name
+    for workflow in workflows:
+        workflow.itemtype.item_type_name.name = _(workflow.itemtype.item_type_name.name)
+        workflow.flow_define.flow_name = _(workflow.flow_define.flow_name)
 
     return render_template(
         'weko_workflow/workflow_list.html',
@@ -1105,7 +1111,7 @@ def display_activity(activity_id="0"):
         pid=recid,
         _id=_id,
         position_list=position_list,
-        records=record,
+        records=escape_double_curly_braces(record),
         render_widgets=render_widgets,
         res_check=res_check,
         schemaform=schema_form,
@@ -1690,7 +1696,12 @@ def next_action(activity_id='0', action_id=0):
                     item_id=current_pid,
                     item_title=activity_detail.title
                 )
-        except BaseException:
+        except BaseException as e:
+            import traceback
+            print(f"====================================================================")
+            print(f"e: {e}")
+            print(f"====================================================================")
+            traceback.print_exc()
             abort(500, 'MAPPING_ERROR')
     else:
         flag = work_activity.upt_activity_action(
@@ -2091,6 +2102,8 @@ def cancel_action(activity_id='0', action_id=0):
                 return jsonify(res.data), 500
             cancel_item_id = pid.object_uuid
     if cancel_item_id:
+        print(f"==================== cancel_action =====================")
+        print(f"cancel_item_id: {cancel_item_id}")
         cancel_record = WekoDeposit.get_record(cancel_item_id)
         try:
             with db.session.begin_nested():
@@ -2130,6 +2143,7 @@ def cancel_action(activity_id='0', action_id=0):
                 pids = PersistentIdentifier.query.filter_by(
                     object_uuid=cancel_item_id)
                 for p in pids:
+                    print(f"cancel pid: {p}")
                     if not p.pid_value.endswith('.0'):
                         p.status = PIDStatus.DELETED
             db.session.commit()

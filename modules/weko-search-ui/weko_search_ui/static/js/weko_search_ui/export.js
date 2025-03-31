@@ -228,7 +228,7 @@ class ExportComponent extends React.Component {
       type: 'GET',
       url: urlExportStatus,
       dataType: 'json',
-      async: false,
+      async: true,
       success: function (response) {
         if (response.data) {
           if (!me.state.checkExportSttInterval) {

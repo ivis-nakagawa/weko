@@ -61,6 +61,7 @@ from simplekv.memory.redisstore import RedisStore
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm.attributes import flag_modified
 from weko_admin.models import AdminSettings
+from weko_admin.utils import escape_filename, sanitize_input_data
 from weko_index_tree.api import Indexes
 from weko_records.api import ItemLink, ItemsMetadata, ItemTypes,FeedbackMailList
 from weko_records.models import ItemMetadata, ItemReference
@@ -1130,7 +1131,7 @@ class WekoDeposit(Deposit):
                             url_metadata = lst.get('url', {})
                             url_metadata['url'] = '{}record/{}/files/{}' \
                                 .format(get_url_root(),
-                                        self['recid'], filename)
+                                        self['recid'], escape_filename(filename))
                             lst.update({'url': url_metadata})
 
                             # update file_files's json
@@ -1154,6 +1155,10 @@ class WekoDeposit(Deposit):
                                                 reader = parser.from_buffer(fp.read(current_app.config['WEKO_DEPOSIT_FILESIZE_LIMIT']))
                                                 if reader is not None and "content" in reader and reader["content"] is not None:
                                                     data = "".join(reader["content"].splitlines())
+                                            # 制御文字削除
+                                            print(f"=================================== ファイル登録 ===================================")
+                                            data = sanitize_input_data(data)
+                                            print(f"data: {data}")
                                             attachment["content"] = data
                                     except FileNotFoundError as se:
                                         current_app.logger.error("FileNotFoundError: {}".format(se))

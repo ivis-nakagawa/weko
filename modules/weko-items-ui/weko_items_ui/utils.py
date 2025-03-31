@@ -3439,6 +3439,9 @@ def get_workflow_by_item_type_id(item_type_name_id, item_type_id):
     """Get workflow settings by item type id."""
     from weko_workflow.models import WorkFlow
 
+    print(f"-------------------------------------------------------------")
+    print(f"item_type_name_id: {item_type_name_id}")
+    print(f"item_type_id: {item_type_id}")
     workflow = WorkFlow.query.filter_by(
         itemtype_id=item_type_id).first()
     if not workflow:
@@ -3695,41 +3698,41 @@ def get_ranking(settings):
     return rankings
 
 
-def __sanitize_string(s: str):
-    """Sanitize control characters without '\x09', '\x0a', '\x0d' and '0x7f'.
+# def __sanitize_string(s: str):
+#     """Sanitize control characters without '\x09', '\x0a', '\x0d' and '0x7f'.
 
-    Args:
-        s (str): target string
+#     Args:
+#         s (str): target string
 
-    Returns:
-        str: sanitized string
-    """
-    s = s.strip()
-    sanitize_str = ""
-    for i in s:
-        if ord(i) in [9, 10, 13] or (31 < ord(i) != 127):
-            sanitize_str += i
-    return sanitize_str
+#     Returns:
+#         str: sanitized string
+#     """
+#     s = s.strip()
+#     sanitize_str = ""
+#     for i in s:
+#         if ord(i) in [9, 10, 13] or (31 < ord(i) != 127):
+#             sanitize_str += i
+#     return sanitize_str
 
 
-def sanitize_input_data(data):
-    """Sanitize control characters without '\x09', '\x0a', '\x0d' and '0x7f'.
+# def sanitize_input_data(data):
+#     """Sanitize control characters without '\x09', '\x0a', '\x0d' and '0x7f'.
 
-    Args:
-        data (dict or list): target dict or list
-    """    
-    if isinstance(data, dict):
-        for k, v in data.items():
-            if isinstance(v, str):
-                data[k] = __sanitize_string(v)
-            else:
-                sanitize_input_data(v)
-    elif isinstance(data, list):
-        for i in range(len(data)):
-            if isinstance(data[i], str):
-                data[i] = __sanitize_string(data[i])
-            else:
-                sanitize_input_data(data[i])
+#     Args:
+#         data (dict or list): target dict or list
+#     """    
+#     if isinstance(data, dict):
+#         for k, v in data.items():
+#             if isinstance(v, str):
+#                 data[k] = __sanitize_string(v)
+#             else:
+#                 sanitize_input_data(v)
+#     elif isinstance(data, list):
+#         for i in range(len(data)):
+#             if isinstance(data[i], str):
+#                 data[i] = __sanitize_string(data[i])
+#             else:
+#                 sanitize_input_data(data[i])
 
 
 def save_title(activity_id, request_data):

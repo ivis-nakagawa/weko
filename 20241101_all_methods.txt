@@ -1,0 +1,640 @@
+Endpoint                                             Methods                        Rule
+---------------------------------------------------  -----------------------------  ---------------------------------------------------------------------------------------
+_debug_toolbar.static                                GET, HEAD, OPTIONS             /_debug_toolbar/static/<path:filename>
+actionroles.action_view                              OPTIONS, POST                  /admin/actionroles/action/
+actionroles.ajax_lookup                              GET, HEAD, OPTIONS             /admin/actionroles/ajax/lookup/
+actionroles.ajax_update                              OPTIONS, POST                  /admin/actionroles/ajax/update/
+actionroles.create_view                              GET, HEAD, OPTIONS, POST       /admin/actionroles/new/
+actionroles.delete_view                              OPTIONS, POST                  /admin/actionroles/delete/
+actionroles.details_view                             GET, HEAD, OPTIONS             /admin/actionroles/details/
+actionroles.edit_view                                GET, HEAD, OPTIONS, POST       /admin/actionroles/edit/
+actionroles.export                                   GET, HEAD, OPTIONS             /admin/actionroles/export/<export_type>/
+actionroles.index_view                               GET, HEAD, OPTIONS             /admin/actionroles/
+actionsystemroles.action_view                        OPTIONS, POST                  /admin/actionsystemroles/action/
+actionsystemroles.ajax_lookup                        GET, HEAD, OPTIONS             /admin/actionsystemroles/ajax/lookup/
+actionsystemroles.ajax_update                        OPTIONS, POST                  /admin/actionsystemroles/ajax/update/
+actionsystemroles.create_view                        GET, HEAD, OPTIONS, POST       /admin/actionsystemroles/new/
+actionsystemroles.delete_view                        OPTIONS, POST                  /admin/actionsystemroles/delete/
+actionsystemroles.details_view                       GET, HEAD, OPTIONS             /admin/actionsystemroles/details/
+actionsystemroles.edit_view                          GET, HEAD, OPTIONS, POST       /admin/actionsystemroles/edit/
+actionsystemroles.export                             GET, HEAD, OPTIONS             /admin/actionsystemroles/export/<export_type>/
+actionsystemroles.index_view                         GET, HEAD, OPTIONS             /admin/actionsystemroles/
+actionusers.action_view                              OPTIONS, POST                  /admin/actionusers/action/
+actionusers.ajax_lookup                              GET, HEAD, OPTIONS             /admin/actionusers/ajax/lookup/
+actionusers.ajax_update                              OPTIONS, POST                  /admin/actionusers/ajax/update/
+actionusers.create_view                              GET, HEAD, OPTIONS, POST       /admin/actionusers/new/
+actionusers.delete_view                              OPTIONS, POST                  /admin/actionusers/delete/
+actionusers.details_view                             GET, HEAD, OPTIONS             /admin/actionusers/details/
+actionusers.edit_view                                GET, HEAD, OPTIONS, POST       /admin/actionusers/edit/
+actionusers.export                                   GET, HEAD, OPTIONS             /admin/actionusers/export/<export_type>/
+actionusers.index_view                               GET, HEAD, OPTIONS             /admin/actionusers/
+admin.index                                          GET, HEAD, OPTIONS             /admin/
+admin.static                                         GET, HEAD, OPTIONS             /admin/static/<path:filename>
+authors.add                                          GET, HEAD, OPTIONS             /admin/authors/add
+authors.edit                                         GET, HEAD, OPTIONS             /admin/authors/edit
+authors.index                                        GET, HEAD, OPTIONS             /admin/authors/
+authors/export.cancel                                OPTIONS, POST                  /admin/authors/export/cancel
+authors/export.check_status                          GET, HEAD, OPTIONS             /admin/authors/export/check_status
+authors/export.download                              GET, HEAD, OPTIONS             /admin/authors/export/download/Creator_export_all
+authors/export.export                                OPTIONS, POST                  /admin/authors/export/export
+authors/export.index                                 GET, HEAD, OPTIONS             /admin/authors/export/
+authors/import.check_import_file                     OPTIONS, POST                  /admin/authors/import/check_import_file
+authors/import.check_import_status                   OPTIONS, POST                  /admin/authors/import/check_import_status
+authors/import.import_authors                        OPTIONS, POST                  /admin/authors/import/import
+authors/import.index                                 GET, HEAD, OPTIONS             /admin/authors/import/
+authors/import.is_import_available                   GET, HEAD, OPTIONS             /admin/authors/import/is_import_available
+bucket.action_view                                   OPTIONS, POST                  /admin/bucket/action/
+bucket.ajax_lookup                                   GET, HEAD, OPTIONS             /admin/bucket/ajax/lookup/
+bucket.ajax_update                                   OPTIONS, POST                  /admin/bucket/ajax/update/
+bucket.create_view                                   GET, HEAD, OPTIONS, POST       /admin/bucket/new/
+bucket.delete_view                                   OPTIONS, POST                  /admin/bucket/delete/
+bucket.details_view                                  GET, HEAD, OPTIONS             /admin/bucket/details/
+bucket.edit_view                                     GET, HEAD, OPTIONS, POST       /admin/bucket/edit/
+bucket.export                                        GET, HEAD, OPTIONS             /admin/bucket/export/<export_type>/
+bucket.index_view                                    GET, HEAD, OPTIONS             /admin/bucket/
+change_list.create                                   OPTIONS, POST                  /admin/change_list/create
+change_list.delete                                   OPTIONS, POST                  /admin/change_list/delete/<repo_id>
+change_list.get_change_list                          GET, HEAD, OPTIONS             /admin/change_list/get_change_list/<repo_id>
+change_list.get_list                                 GET, HEAD, OPTIONS             /admin/change_list/get_all
+change_list.index                                    GET, HEAD, OPTIONS             /admin/change_list/
+change_list.update                                   OPTIONS, POST                  /admin/change_list/update/<repo_id>
+client.action_view                                   OPTIONS, POST                  /admin/client/action/
+client.ajax_lookup                                   GET, HEAD, OPTIONS             /admin/client/ajax/lookup/
+client.ajax_update                                   OPTIONS, POST                  /admin/client/ajax/update/
+client.create_view                                   GET, HEAD, OPTIONS, POST       /admin/client/new/
+client.delete_view                                   OPTIONS, POST                  /admin/client/delete/
+client.details_view                                  GET, HEAD, OPTIONS             /admin/client/details/
+client.edit_view                                     GET, HEAD, OPTIONS, POST       /admin/client/edit/
+client.export                                        GET, HEAD, OPTIONS             /admin/client/export/<export_type>/
+client.index_view                                    GET, HEAD, OPTIONS             /admin/client/
+community.action_view                                OPTIONS, POST                  /admin/community/action/
+community.ajax_lookup                                GET, HEAD, OPTIONS             /admin/community/ajax/lookup/
+community.ajax_update                                OPTIONS, POST                  /admin/community/ajax/update/
+community.create_view                                GET, HEAD, OPTIONS, POST       /admin/community/new/
+community.delete_view                                OPTIONS, POST                  /admin/community/delete/
+community.details_view                               GET, HEAD, OPTIONS             /admin/community/details/
+community.edit_view                                  GET, HEAD, OPTIONS, POST       /admin/community/edit/
+community.export                                     GET, HEAD, OPTIONS             /admin/community/export/<export_type>/
+community.index_view                                 GET, HEAD, OPTIONS             /admin/community/
+debugtoolbar.save_template                           OPTIONS, POST                  /_debug_toolbar/views/template/<key>/save
+debugtoolbar.sql_select                              GET, HEAD, OPTIONS, POST       /_debug_toolbar/views/sqlalchemy/sql_select
+debugtoolbar.sql_select                              GET, HEAD, OPTIONS, POST       /_debug_toolbar/views/sqlalchemy/sql_explain
+debugtoolbar.template_editor                         GET, HEAD, OPTIONS             /_debug_toolbar/views/template/<key>
+debugtoolbar.template_preview                        OPTIONS, POST                  /_debug_toolbar/views/template/<key>
+facet-search.action_view                             OPTIONS, POST                  /admin/facet-search/action/
+facet-search.ajax_lookup                             GET, HEAD, OPTIONS             /admin/facet-search/ajax/lookup/
+facet-search.ajax_update                             OPTIONS, POST                  /admin/facet-search/ajax/update/
+facet-search.create_view                             GET, HEAD, OPTIONS, POST       /admin/facet-search/new/
+facet-search.delete                                  GET, HEAD, OPTIONS, POST       /admin/facet-search/delete/
+facet-search.delete                                  GET, HEAD, OPTIONS, POST       /admin/facet-search/delete/<int:id>
+facet-search.delete_view                             OPTIONS, POST                  /admin/facet-search/delete/
+facet-search.details_view                            GET, HEAD, OPTIONS, POST       /admin/facet-search/details/<int:id>
+facet-search.edit_view                               GET, HEAD, OPTIONS, POST       /admin/facet-search/edit/<int:id>
+facet-search.export                                  GET, HEAD, OPTIONS             /admin/facet-search/export/<export_type>/
+facet-search.index_view                              GET, HEAD, OPTIONS             /admin/facet-search/
+featuredcommunity.action_view                        OPTIONS, POST                  /admin/featuredcommunity/action/
+featuredcommunity.ajax_lookup                        GET, HEAD, OPTIONS             /admin/featuredcommunity/ajax/lookup/
+featuredcommunity.ajax_update                        OPTIONS, POST                  /admin/featuredcommunity/ajax/update/
+featuredcommunity.create_view                        GET, HEAD, OPTIONS, POST       /admin/featuredcommunity/new/
+featuredcommunity.delete_view                        OPTIONS, POST                  /admin/featuredcommunity/delete/
+featuredcommunity.details_view                       GET, HEAD, OPTIONS             /admin/featuredcommunity/details/
+featuredcommunity.edit_view                          GET, HEAD, OPTIONS, POST       /admin/featuredcommunity/edit/
+featuredcommunity.export                             GET, HEAD, OPTIONS             /admin/featuredcommunity/export/<export_type>/
+featuredcommunity.index_view                         GET, HEAD, OPTIONS             /admin/featuredcommunity/
+feedbackmail.index                                   GET, HEAD, OPTIONS, POST       /admin/feedbackmail/
+fileinstance.action_view                             OPTIONS, POST                  /admin/fileinstance/action/
+fileinstance.ajax_lookup                             GET, HEAD, OPTIONS             /admin/fileinstance/ajax/lookup/
+fileinstance.ajax_update                             OPTIONS, POST                  /admin/fileinstance/ajax/update/
+fileinstance.create_view                             GET, HEAD, OPTIONS, POST       /admin/fileinstance/new/
+fileinstance.delete_view                             OPTIONS, POST                  /admin/fileinstance/delete/
+fileinstance.details_view                            GET, HEAD, OPTIONS             /admin/fileinstance/details/
+fileinstance.edit_view                               GET, HEAD, OPTIONS, POST       /admin/fileinstance/edit/
+fileinstance.export                                  GET, HEAD, OPTIONS             /admin/fileinstance/export/<export_type>/
+fileinstance.index_view                              GET, HEAD, OPTIONS             /admin/fileinstance/
+filepreview.index                                    GET, HEAD, OPTIONS, POST       /admin/filepreview/
+flask_sitemap.page                                   GET, HEAD, OPTIONS             /weko/sitemaps/sitemap_<int:page>.xml.gz
+flask_sitemap.sitemap                                GET, HEAD, OPTIONS             /weko/sitemaps/sitemapindex.xml
+flowsetting.del_flow                                 DELETE, OPTIONS                /admin/flowsetting/<string:flow_id>
+flowsetting.flow_detail                              GET, HEAD, OPTIONS             /admin/flowsetting/<string:flow_id>
+flowsetting.index                                    GET, HEAD, OPTIONS             /admin/flowsetting/
+flowsetting.new_flow                                 OPTIONS, POST                  /admin/flowsetting/<string:flow_id>
+flowsetting.upt_flow_action                          OPTIONS, POST                  /admin/flowsetting/action/<string:flow_id>
+harvestsettings.action_view                          OPTIONS, POST                  /admin/harvestsettings/action/
+harvestsettings.ajax_lookup                          GET, HEAD, OPTIONS             /admin/harvestsettings/ajax/lookup/
+harvestsettings.ajax_update                          OPTIONS, POST                  /admin/harvestsettings/ajax/update/
+harvestsettings.clear                                GET, HEAD, OPTIONS             /admin/harvestsettings/clear/
+harvestsettings.create_view                          GET, HEAD, OPTIONS, POST       /admin/harvestsettings/new/
+harvestsettings.delete_view                          OPTIONS, POST                  /admin/harvestsettings/delete/
+harvestsettings.details_view                         GET, HEAD, OPTIONS             /admin/harvestsettings/details/
+harvestsettings.edit_view                            GET, HEAD, OPTIONS, POST       /admin/harvestsettings/edit/
+harvestsettings.export                               GET, HEAD, OPTIONS             /admin/harvestsettings/export/<export_type>/
+harvestsettings.get_log_detail                       GET, HEAD, OPTIONS             /admin/harvestsettings/get_log_detail/<id>/
+harvestsettings.get_logs                             GET, HEAD, OPTIONS             /admin/harvestsettings/get_logs/
+harvestsettings.index_view                           GET, HEAD, OPTIONS             /admin/harvestsettings/
+harvestsettings.pause                                GET, HEAD, OPTIONS             /admin/harvestsettings/pause/
+harvestsettings.run                                  GET, HEAD, OPTIONS             /admin/harvestsettings/run/
+harvestsettings.set_schedule                         OPTIONS, POST                  /admin/harvestsettings/set_schedule/<id>/
+identifier.action_view                               OPTIONS, POST                  /admin/identifier/action/
+identifier.ajax_lookup                               GET, HEAD, OPTIONS             /admin/identifier/ajax/lookup/
+identifier.ajax_update                               OPTIONS, POST                  /admin/identifier/ajax/update/
+identifier.create_view                               GET, HEAD, OPTIONS, POST       /admin/identifier/new/
+identifier.delete_view                               OPTIONS, POST                  /admin/identifier/delete/
+identifier.details_view                              GET, HEAD, OPTIONS             /admin/identifier/details/
+identifier.edit_view                                 GET, HEAD, OPTIONS, POST       /admin/identifier/edit/
+identifier.export                                    GET, HEAD, OPTIONS             /admin/identifier/export/<export_type>/
+identifier.index_view                                GET, HEAD, OPTIONS             /admin/identifier/
+identify.action_view                                 OPTIONS, POST                  /admin/identify/action/
+identify.ajax_lookup                                 GET, HEAD, OPTIONS             /admin/identify/ajax/lookup/
+identify.ajax_update                                 OPTIONS, POST                  /admin/identify/ajax/update/
+identify.create_view                                 GET, HEAD, OPTIONS, POST       /admin/identify/new/
+identify.delete_view                                 OPTIONS, POST                  /admin/identify/delete/
+identify.details_view                                GET, HEAD, OPTIONS             /admin/identify/details/
+identify.edit_view                                   GET, HEAD, OPTIONS, POST       /admin/identify/edit/
+identify.export                                      GET, HEAD, OPTIONS             /admin/identify/export/<export_type>/
+identify.index_view                                  GET, HEAD, OPTIONS             /admin/identify/
+inclusionrequest.action_view                         OPTIONS, POST                  /admin/inclusionrequest/action/
+inclusionrequest.ajax_lookup                         GET, HEAD, OPTIONS             /admin/inclusionrequest/ajax/lookup/
+inclusionrequest.ajax_update                         OPTIONS, POST                  /admin/inclusionrequest/ajax/update/
+inclusionrequest.create_view                         GET, HEAD, OPTIONS, POST       /admin/inclusionrequest/new/
+inclusionrequest.delete_view                         OPTIONS, POST                  /admin/inclusionrequest/delete/
+inclusionrequest.details_view                        GET, HEAD, OPTIONS             /admin/inclusionrequest/details/
+inclusionrequest.edit_view                           GET, HEAD, OPTIONS, POST       /admin/inclusionrequest/edit/
+inclusionrequest.export                              GET, HEAD, OPTIONS             /admin/inclusionrequest/export/<export_type>/
+inclusionrequest.index_view                          GET, HEAD, OPTIONS             /admin/inclusionrequest/
+indexedit.index                                      GET, HEAD, OPTIONS             /admin/indexedit/
+indexedit.index                                      GET, HEAD, OPTIONS             /admin/indexedit/<int:index_id>
+indexedit.upload_image                               OPTIONS, POST                  /admin/indexedit/upload
+indexjournal.get_journal_by_index_id                 GET, HEAD, OPTIONS             /admin/indexjournal/index/<int:index_id>
+indexjournal.get_json_schema                         GET, HEAD, OPTIONS             /admin/indexjournal/jsonschema
+indexjournal.get_schema_form                         GET, HEAD, OPTIONS             /admin/indexjournal/schemaform
+indexjournal.index                                   GET, HEAD, OPTIONS             /admin/indexjournal/
+indexjournal.index                                   GET, HEAD, OPTIONS             /admin/indexjournal/<int:index_id>
+indexlink.index                                      GET, HEAD, OPTIONS, POST       /admin/indexlink/
+invenio_accounts.revoke_session                      OPTIONS, POST                  /account/settings/sessions/revoke/
+invenio_accounts.security                            GET, HEAD, OPTIONS             /account/settings/security/
+invenio_accounts.static                              GET, HEAD, OPTIONS             /account/settings/static/<path:filename>
+invenio_app_ping.ping                                GET, HEAD, OPTIONS             /ping
+invenio_communities.community_list                   GET, HEAD, OPTIONS             /c/list/
+invenio_communities.static                           GET, HEAD, OPTIONS             /c/static/<path:filename>
+invenio_communities.view                             GET, HEAD, OPTIONS             /c/<string:community_id>/
+invenio_deposit_ui.depid                             GET, HEAD, OPTIONS             /item/edit/<pid_value>
+invenio_deposit_ui.iframe_depid                      GET, HEAD, OPTIONS             /item/iframe/edit/<pid_value>
+invenio_deposit_ui.index                             GET, HEAD, OPTIONS             /deposit
+invenio_deposit_ui.new                               GET, HEAD, OPTIONS             /deposit/new
+invenio_deposit_ui.static                            GET, HEAD, OPTIONS             /static/<path:filename>
+invenio_files_rest_admin.static                      GET, HEAD, OPTIONS             /static/<path:filename>
+invenio_files_rest_api.location_usage_amount_info    GET, HEAD, OPTIONS             /adm/locations
+invenio_files_rest_api.static                        GET, HEAD, OPTIONS             /adm/static/<path:filename>
+invenio_i18n.set_lang                                OPTIONS, POST                  /lang/
+invenio_i18n.set_lang                                GET, HEAD, OPTIONS             /lang/<lang_code>
+invenio_i18n.static                                  GET, HEAD, OPTIONS             /lang/static/<path:filename>
+invenio_jsonschemas.get_schema                       GET, HEAD, OPTIONS             /schema/<path:schema_path>
+invenio_mail.static                                  GET, HEAD, OPTIONS             /static/<path:filename>
+invenio_marc21.static                                GET, HEAD, OPTIONS             /static/<path:filename>
+invenio_oaiharvester.static                          GET, HEAD, OPTIONS             /static/<path:filename>
+invenio_oaiserver.response                           GET, HEAD, OPTIONS, POST       /oai
+invenio_oaiserver.static                             GET, HEAD, OPTIONS             /static/<path:filename>
+invenio_oauth2server.access_token                    OPTIONS, POST                  /oauth/token
+invenio_oauth2server.authorize                       GET, HEAD, OPTIONS, POST       /oauth/authorize
+invenio_oauth2server.errors                          GET, HEAD, OPTIONS             /oauth/errors
+invenio_oauth2server.info                            GET, HEAD, OPTIONS             /oauth/info
+invenio_oauth2server.invalid                         GET, HEAD, OPTIONS             /oauth/invalid
+invenio_oauth2server.ping                            GET, HEAD, OPTIONS, POST       /oauth/ping
+invenio_oauth2server.static                          GET, HEAD, OPTIONS             /oauth/static/<path:filename>
+invenio_oauth2server_settings.client_new             GET, HEAD, OPTIONS, POST       /account/settings/applications/clients/new/
+invenio_oauth2server_settings.client_reset           OPTIONS, POST                  /account/settings/applications/clients/<string:client_id>/reset/
+invenio_oauth2server_settings.client_view            GET, HEAD, OPTIONS, POST       /account/settings/applications/clients/<string:client_id>/
+invenio_oauth2server_settings.index                  GET, HEAD, OPTIONS, POST       /account/settings/applications/
+invenio_oauth2server_settings.static                 GET, HEAD, OPTIONS             /account/settings/applications/static/<path:filename>
+invenio_oauth2server_settings.token_new              GET, HEAD, OPTIONS, POST       /account/settings/applications/tokens/new/
+invenio_oauth2server_settings.token_permission_view  GET, HEAD, OPTIONS             /account/settings/applications/tokens/<string:token_id>/view/
+invenio_oauth2server_settings.token_revoke           GET, HEAD, OPTIONS             /account/settings/applications/tokens/<string:token_id>/revoke/
+invenio_oauth2server_settings.token_view             GET, HEAD, OPTIONS, POST       /account/settings/applications/tokens/<string:token_id>/
+invenio_oauthclient.authorized                       GET, HEAD, OPTIONS             /oauth/authorized/<remote_app>/
+invenio_oauthclient.disconnect                       GET, HEAD, OPTIONS             /oauth/disconnect/<remote_app>/
+invenio_oauthclient.login                            GET, HEAD, OPTIONS             /oauth/login/<remote_app>/
+invenio_oauthclient.signup                           GET, HEAD, OPTIONS, POST       /oauth/signup/<remote_app>/
+invenio_oauthclient.static                           GET, HEAD, OPTIONS             /oauth/static/<path:filename>
+invenio_oauthclient_settings.index                   GET, HEAD, OPTIONS, POST       /account/settings/linkedaccounts/
+invenio_oauthclient_settings.static                  GET, HEAD, OPTIONS             /account/settings/linkedaccounts/static/<path:filename>
+invenio_previewer.static                             GET, HEAD, OPTIONS             /static/<path:filename>
+invenio_records.static                               GET, HEAD, OPTIONS             /static/<path:filename>
+invenio_records_ui.recid                             GET, HEAD, OPTIONS             /records/<pid_value>
+invenio_records_ui.recid_export                      GET, HEAD, OPTIONS             /records/<pid_value>/export/<format>
+invenio_records_ui.recid_file_details                GET, HEAD, OPTIONS             /records/<pid_value>/file_details/<path:filename>
+invenio_records_ui.recid_file_preview                GET, HEAD, OPTIONS             /record/<pid_value>/file_preview/<path:filename>
+invenio_records_ui.recid_files                       GET, HEAD, OPTIONS             /record/<pid_value>/files/<path:filename>
+invenio_records_ui.recid_guest_file_download         GET, HEAD, OPTIONS             /record/<pid_value>/file/onetime/<string:filename>
+invenio_records_ui.recid_preview                     GET, HEAD, OPTIONS             /record/<pid_value>/preview/<path:filename>
+invenio_records_ui.recid_publish                     OPTIONS, POST                  /record/<pid_value>/publish
+invenio_records_ui.recid_secret_file_download        GET, HEAD, OPTIONS             /record/<pid_value>/file/secret/<string:filename>
+invenio_records_ui.recid_secret_url                  OPTIONS, POST                  /records/<pid_value>/secret/<path:filename>
+invenio_records_ui.static                            GET, HEAD, OPTIONS             /static/<path:filename>
+invenio_resourcesyncclient.index                     GET, HEAD, OPTIONS             /
+invenio_resourcesyncclient.static                    GET, HEAD, OPTIONS             /static/<path:filename>
+invenio_resourcesyncserver.capability                GET, HEAD, OPTIONS             /resync/capability.xml
+invenio_resourcesyncserver.change_dump               GET, HEAD, OPTIONS             /resync/<index_id>/<from_date>/changedump.xml
+invenio_resourcesyncserver.change_dump_content       GET, HEAD, OPTIONS             /resync/<index_id>/<record_id>/change_dump_content.zip
+invenio_resourcesyncserver.change_dump_index         GET, HEAD, OPTIONS             /resync/<index_id>/changedump.xml
+invenio_resourcesyncserver.change_dump_manifest      GET, HEAD, OPTIONS             /resync/<index_id>/<record_id>/changedump_manifest.xml
+invenio_resourcesyncserver.change_list               GET, HEAD, OPTIONS             /resync/<index_id>/<from_date>/changelist.xml
+invenio_resourcesyncserver.change_list_index         GET, HEAD, OPTIONS             /resync/<index_id>/changelist.xml
+invenio_resourcesyncserver.file_content              GET, HEAD, OPTIONS             /resync/<index_id>/<record_id>/file_content.zip
+invenio_resourcesyncserver.record_detail_in_index    GET, HEAD, OPTIONS             /resync/<index_id>/records/<record_id>
+invenio_resourcesyncserver.resource_dump             GET, HEAD, OPTIONS             /resync/<index_id>/resourcedump.xml
+invenio_resourcesyncserver.resource_dump_manifest    GET, HEAD, OPTIONS             /resync/<index_id>/<record_id>/resourcedump_manifest.xml
+invenio_resourcesyncserver.resource_list             GET, HEAD, OPTIONS             /resync/<index_id>/resourcelist.xml
+invenio_resourcesyncserver.source_description        GET, HEAD, OPTIONS             /resync/source.xml
+invenio_resourcesyncserver.static                    GET, HEAD, OPTIONS             /static/<path:filename>
+invenio_resourcesyncserver.well_know_resourcesync    GET, HEAD, OPTIONS             /.well-known/resourcesync
+invenio_search_ui.search                             GET, HEAD, OPTIONS             /search
+invenio_search_ui.static                             GET, HEAD, OPTIONS             /static/<path:filename>
+invenio_theme.static                                 GET, HEAD, OPTIONS             /static/<path:filename>
+itemexportsettings.index                             GET, HEAD, OPTIONS, POST       /admin/itemexportsettings/
+items/bulk-export.cancel_export                      GET, HEAD, OPTIONS             /admin/items/bulk-export/cancel_export
+items/bulk-export.check_export_status                GET, HEAD, OPTIONS             /admin/items/bulk-export/check_export_status
+items/bulk-export.download                           GET, HEAD, OPTIONS             /admin/items/bulk-export/download
+items/bulk-export.export_all                         OPTIONS, POST                  /admin/items/bulk-export/export_all
+items/bulk-export.index                              GET, HEAD, OPTIONS             /admin/items/bulk-export/
+items/bulk/delete.check                              GET, HEAD, OPTIONS             /admin/items/bulk/delete/check
+items/bulk/delete.index                              GET, HEAD, OPTIONS, PUT        /admin/items/bulk/delete/
+items/bulk/update.get_items_metadata                 GET, HEAD, OPTIONS             /admin/items/bulk/update/items_metadata
+items/bulk/update.index                              GET, HEAD, OPTIONS             /admin/items/bulk/update/
+items/custom_sort.index                              GET, HEAD, OPTIONS             /admin/items/custom_sort/
+items/custom_sort.save_sort                          OPTIONS, POST                  /admin/items/custom_sort/save
+items/import.check                                   OPTIONS, POST                  /admin/items/import/check
+items/import.check_import_available                  GET, HEAD, OPTIONS             /admin/items/import/check_import_is_available
+items/import.download_check                          OPTIONS, POST                  /admin/items/import/download_check
+items/import.download_import                         OPTIONS, POST                  /admin/items/import/export_import
+items/import.export_template                         OPTIONS, POST                  /admin/items/import/export_template
+items/import.get_check_status                        OPTIONS, POST                  /admin/items/import/get_check_status
+items/import.get_disclaimer_text                     GET, HEAD, OPTIONS             /admin/items/import/get_disclaimer_text
+items/import.get_status                              OPTIONS, POST                  /admin/items/import/check_status
+items/import.import_items                            OPTIONS, POST                  /admin/items/import/import
+items/import.index                                   GET, HEAD, OPTIONS             /admin/items/import/
+items/search.index                                   GET, HEAD, OPTIONS             /admin/items/search/
+itemsetting.index                                    GET, HEAD, OPTIONS, POST       /admin/itemsetting/
+itemtypesmapping.index                               GET, HEAD, OPTIONS             /admin/itemtypes/mapping/
+itemtypesmapping.index                               GET, HEAD, OPTIONS             /admin/itemtypes/mapping/<int:ItemTypeID>
+itemtypesmapping.mapping_register                    OPTIONS, POST                  /admin/itemtypes/mapping
+itemtypesmapping.schema_list                         GET, HEAD, OPTIONS             /admin/itemtypes/mapping/schema
+itemtypesmapping.schema_list                         GET, HEAD, OPTIONS             /admin/itemtypes/mapping/schema/<string:SchemaName>
+itemtypesproperties.custom_property_new              OPTIONS, POST                  /admin/itemtypes/properties
+itemtypesproperties.custom_property_new              OPTIONS, POST                  /admin/itemtypes/properties/<int:property_id>
+itemtypesproperties.get_property                     GET, HEAD, OPTIONS             /admin/itemtypes/properties/<int:property_id>
+itemtypesproperties.index                            GET, HEAD, OPTIONS             /admin/itemtypes/properties/
+itemtypesregister.delete_itemtype                    OPTIONS, POST                  /admin/itemtypes/delete/
+itemtypesregister.delete_itemtype                    OPTIONS, POST                  /admin/itemtypes/delete
+itemtypesregister.delete_itemtype                    OPTIONS, POST                  /admin/itemtypes/delete/<int:item_type_id>
+itemtypesregister.export                             GET, HEAD, OPTIONS             /admin/itemtypes/<int:item_type_id>/export
+itemtypesregister.get_property_list                  GET, HEAD, OPTIONS             /admin/itemtypes/get-all-properties
+itemtypesregister.index                              GET, HEAD, OPTIONS             /admin/itemtypes/
+itemtypesregister.index                              GET, HEAD, OPTIONS             /admin/itemtypes/<int:item_type_id>
+itemtypesregister.item_type_import                   OPTIONS, POST                  /admin/itemtypes/import
+itemtypesregister.register                           OPTIONS, POST                  /admin/itemtypes/register
+itemtypesregister.register                           OPTIONS, POST                  /admin/itemtypes/<int:item_type_id>/register
+itemtypesregister.render_itemtype                    GET, HEAD, OPTIONS             /admin/itemtypes/<int:item_type_id>/render
+itemtypesregister.restore_itemtype                   OPTIONS, POST                  /admin/itemtypes/restore/
+itemtypesregister.restore_itemtype                   OPTIONS, POST                  /admin/itemtypes/restore
+itemtypesregister.restore_itemtype                   OPTIONS, POST                  /admin/itemtypes/restore/<int:item_type_id>
+language.index                                       GET, HEAD, OPTIONS, POST       /admin/language/
+location.action_view                                 OPTIONS, POST                  /admin/location/action/
+location.ajax_lookup                                 GET, HEAD, OPTIONS             /admin/location/ajax/lookup/
+location.ajax_update                                 OPTIONS, POST                  /admin/location/ajax/update/
+location.create_view                                 GET, HEAD, OPTIONS, POST       /admin/location/new/
+location.delete_view                                 OPTIONS, POST                  /admin/location/delete/
+location.details_view                                GET, HEAD, OPTIONS             /admin/location/details/
+location.edit_view                                   GET, HEAD, OPTIONS, POST       /admin/location/edit/
+location.export                                      GET, HEAD, OPTIONS             /admin/location/export/<export_type>/
+location.index_view                                  GET, HEAD, OPTIONS             /admin/location/
+loganalysissetting.index                             GET, HEAD, OPTIONS, POST       /admin/loganalysissetting/
+mail.index                                           GET, HEAD, OPTIONS, POST       /admin/mail/
+mail.send_test_mail                                  OPTIONS, POST                  /admin/mail/send_test_mail
+multipartobject.action_view                          OPTIONS, POST                  /admin/multipartobject/action/
+multipartobject.ajax_lookup                          GET, HEAD, OPTIONS             /admin/multipartobject/ajax/lookup/
+multipartobject.ajax_update                          OPTIONS, POST                  /admin/multipartobject/ajax/update/
+multipartobject.create_view                          GET, HEAD, OPTIONS, POST       /admin/multipartobject/new/
+multipartobject.delete_view                          OPTIONS, POST                  /admin/multipartobject/delete/
+multipartobject.details_view                         GET, HEAD, OPTIONS             /admin/multipartobject/details/
+multipartobject.edit_view                            GET, HEAD, OPTIONS, POST       /admin/multipartobject/edit/
+multipartobject.export                               GET, HEAD, OPTIONS             /admin/multipartobject/export/<export_type>/
+multipartobject.index_view                           GET, HEAD, OPTIONS             /admin/multipartobject/
+oaiset.action_view                                   OPTIONS, POST                  /admin/oaiset/action/
+oaiset.ajax_lookup                                   GET, HEAD, OPTIONS             /admin/oaiset/ajax/lookup/
+oaiset.ajax_update                                   OPTIONS, POST                  /admin/oaiset/ajax/update/
+oaiset.create_view                                   GET, HEAD, OPTIONS, POST       /admin/oaiset/new/
+oaiset.delete_view                                   OPTIONS, POST                  /admin/oaiset/delete/
+oaiset.details_view                                  GET, HEAD, OPTIONS             /admin/oaiset/details/
+oaiset.edit_view                                     GET, HEAD, OPTIONS, POST       /admin/oaiset/edit/
+oaiset.export                                        GET, HEAD, OPTIONS             /admin/oaiset/export/<export_type>/
+oaiset.index_view                                    GET, HEAD, OPTIONS             /admin/oaiset/
+objectversion.action_view                            OPTIONS, POST                  /admin/objectversion/action/
+objectversion.ajax_lookup                            GET, HEAD, OPTIONS             /admin/objectversion/ajax/lookup/
+objectversion.ajax_update                            OPTIONS, POST                  /admin/objectversion/ajax/update/
+objectversion.create_view                            GET, HEAD, OPTIONS, POST       /admin/objectversion/new/
+objectversion.delete_view                            OPTIONS, POST                  /admin/objectversion/delete/
+objectversion.details_view                           GET, HEAD, OPTIONS             /admin/objectversion/details/
+objectversion.edit_view                              GET, HEAD, OPTIONS, POST       /admin/objectversion/edit/
+objectversion.export                                 GET, HEAD, OPTIONS             /admin/objectversion/export/<export_type>/
+objectversion.index_view                             GET, HEAD, OPTIONS             /admin/objectversion/
+others.index                                         GET, HEAD, OPTIONS, POST       /admin/others/
+pdfcoverpage.index                                   GET, HEAD, OPTIONS             /admin/pdfcoverpage/
+persistentidentifier.action_view                     OPTIONS, POST                  /admin/persistentidentifier/action/
+persistentidentifier.ajax_lookup                     GET, HEAD, OPTIONS             /admin/persistentidentifier/ajax/lookup/
+persistentidentifier.ajax_update                     OPTIONS, POST                  /admin/persistentidentifier/ajax/update/
+persistentidentifier.create_view                     GET, HEAD, OPTIONS, POST       /admin/persistentidentifier/new/
+persistentidentifier.delete_view                     OPTIONS, POST                  /admin/persistentidentifier/delete/
+persistentidentifier.details_view                    GET, HEAD, OPTIONS             /admin/persistentidentifier/details/
+persistentidentifier.edit_view                       GET, HEAD, OPTIONS, POST       /admin/persistentidentifier/edit/
+persistentidentifier.export                          GET, HEAD, OPTIONS             /admin/persistentidentifier/export/<export_type>/
+persistentidentifier.index_view                      GET, HEAD, OPTIONS             /admin/persistentidentifier/
+rankingsettings.index                                GET, HEAD, OPTIONS, POST       /admin/rankingsettings/
+recordmetadata.action_view                           OPTIONS, POST                  /admin/recordmetadata/action/
+recordmetadata.ajax_lookup                           GET, HEAD, OPTIONS             /admin/recordmetadata/ajax/lookup/
+recordmetadata.ajax_update                           OPTIONS, POST                  /admin/recordmetadata/ajax/update/
+recordmetadata.create_view                           GET, HEAD, OPTIONS, POST       /admin/recordmetadata/new/
+recordmetadata.delete_view                           OPTIONS, POST                  /admin/recordmetadata/delete/
+recordmetadata.details_view                          GET, HEAD, OPTIONS             /admin/recordmetadata/details/
+recordmetadata.edit_view                             GET, HEAD, OPTIONS, POST       /admin/recordmetadata/edit/
+recordmetadata.export                                GET, HEAD, OPTIONS             /admin/recordmetadata/export/<export_type>/
+recordmetadata.index_view                            GET, HEAD, OPTIONS             /admin/recordmetadata/
+recordmetadata.restore                               GET, HEAD, OPTIONS             /admin/recordmetadata/restore/<string:id>
+recordmetadata.soft_delete                           GET, HEAD, OPTIONS             /admin/recordmetadata/soft_delete/<string:id>
+reindex_es.check_reindex_is_running                  GET, HEAD, OPTIONS             /admin/reindex_es/is_reindex_running
+reindex_es.index                                     GET, HEAD, OPTIONS             /admin/reindex_es/
+reindex_es.reindex                                   OPTIONS, POST                  /admin/reindex_es/reindex
+remoteaccount.action_view                            OPTIONS, POST                  /admin/remoteaccount/action/
+remoteaccount.ajax_lookup                            GET, HEAD, OPTIONS             /admin/remoteaccount/ajax/lookup/
+remoteaccount.ajax_update                            OPTIONS, POST                  /admin/remoteaccount/ajax/update/
+remoteaccount.create_view                            GET, HEAD, OPTIONS, POST       /admin/remoteaccount/new/
+remoteaccount.delete_view                            OPTIONS, POST                  /admin/remoteaccount/delete/
+remoteaccount.details_view                           GET, HEAD, OPTIONS             /admin/remoteaccount/details/
+remoteaccount.edit_view                              GET, HEAD, OPTIONS, POST       /admin/remoteaccount/edit/
+remoteaccount.export                                 GET, HEAD, OPTIONS             /admin/remoteaccount/export/<export_type>/
+remoteaccount.index_view                             GET, HEAD, OPTIONS             /admin/remoteaccount/
+remotetoken.action_view                              OPTIONS, POST                  /admin/remotetoken/action/
+remotetoken.ajax_lookup                              GET, HEAD, OPTIONS             /admin/remotetoken/ajax/lookup/
+remotetoken.ajax_update                              OPTIONS, POST                  /admin/remotetoken/ajax/update/
+remotetoken.create_view                              GET, HEAD, OPTIONS, POST       /admin/remotetoken/new/
+remotetoken.delete_view                              OPTIONS, POST                  /admin/remotetoken/delete/
+remotetoken.details_view                             GET, HEAD, OPTIONS             /admin/remotetoken/details/
+remotetoken.edit_view                                GET, HEAD, OPTIONS, POST       /admin/remotetoken/edit/
+remotetoken.export                                   GET, HEAD, OPTIONS             /admin/remotetoken/export/<export_type>/
+remotetoken.index_view                               GET, HEAD, OPTIONS             /admin/remotetoken/
+report.get_email_address                             OPTIONS, POST                  /admin/report/get_email_address
+report.get_file_stats_output                         OPTIONS, POST                  /admin/report/stats_file_output
+report.get_user_report_data                          GET, HEAD, OPTIONS             /admin/report/user_report_data
+report.index                                         GET, HEAD, OPTIONS             /admin/report/
+report.set_email_schedule                            OPTIONS, POST                  /admin/report/set_email_schedule
+resource_list.create                                 OPTIONS, POST                  /admin/resource_list/create
+resource_list.delete                                 OPTIONS, POST                  /admin/resource_list/delete/<resource_id>
+resource_list.get_list                               GET, HEAD, OPTIONS             /admin/resource_list/get_list
+resource_list.index                                  GET, HEAD, OPTIONS             /admin/resource_list/
+resource_list.update                                 OPTIONS, POST                  /admin/resource_list/update/<resource_id>
+restricted_access.index                              GET, HEAD, OPTIONS, POST       /admin/restricted_access/
+resync.create_resync                                 OPTIONS, POST                  /admin/resync/create
+resync.delete_resync                                 OPTIONS, POST                  /admin/resync/delete/<resync_id>
+resync.get_list                                      GET, HEAD, OPTIONS             /admin/resync/get_list
+resync.get_logs                                      GET, HEAD, OPTIONS             /admin/resync/get_logs/<resync_id>
+resync.index                                         GET, HEAD, OPTIONS             /admin/resync/
+resync.run_import                                    GET, HEAD, OPTIONS             /admin/resync/run_import/<resync_id>
+resync.run_sync                                      GET, HEAD, OPTIONS             /admin/resync/run_sync/<resync_id>
+resync.toggle_auto                                   OPTIONS, POST                  /admin/resync/toggle_auto/<resync_id>
+resync.update_resync                                 OPTIONS, POST                  /admin/resync/update/<resync_id>
+role.action_view                                     OPTIONS, POST                  /admin/role/action/
+role.ajax_lookup                                     GET, HEAD, OPTIONS             /admin/role/ajax/lookup/
+role.ajax_update                                     OPTIONS, POST                  /admin/role/ajax/update/
+role.create_view                                     GET, HEAD, OPTIONS, POST       /admin/role/new/
+role.delete_view                                     OPTIONS, POST                  /admin/role/delete/
+role.details_view                                    GET, HEAD, OPTIONS             /admin/role/details/
+role.edit_view                                       GET, HEAD, OPTIONS, POST       /admin/role/edit/
+role.export                                          GET, HEAD, OPTIONS             /admin/role/export/<export_type>/
+role.index_view                                      GET, HEAD, OPTIONS             /admin/role/
+schemasettings.add                                   GET, HEAD, OPTIONS             /admin/schemasettings/add
+schemasettings.delete                                OPTIONS, POST                  /admin/schemasettings/delete
+schemasettings.list                                  GET, HEAD, OPTIONS             /admin/schemasettings/
+searchsettings.index                                 GET, HEAD, OPTIONS, POST       /admin/searchsettings/
+security.confirm_email                               GET, HEAD, OPTIONS, POST       /confirm/<token>
+security.forgot_password                             GET, HEAD, OPTIONS, POST       /lost-password/
+security.login                                       GET, HEAD, OPTIONS, POST       /login/
+security.logout                                      GET, HEAD, OPTIONS             /logout/
+security.reset_password                              GET, HEAD, OPTIONS, POST       /lost-password/<token>/
+security.send_confirmation                           GET, HEAD, OPTIONS, POST       /confirm
+sessionactivity.action_view                          OPTIONS, POST                  /admin/sessionactivity/action/
+sessionactivity.ajax_lookup                          GET, HEAD, OPTIONS             /admin/sessionactivity/ajax/lookup/
+sessionactivity.ajax_update                          OPTIONS, POST                  /admin/sessionactivity/ajax/update/
+sessionactivity.create_view                          GET, HEAD, OPTIONS, POST       /admin/sessionactivity/new/
+sessionactivity.delete_view                          OPTIONS, POST                  /admin/sessionactivity/delete/
+sessionactivity.details_view                         GET, HEAD, OPTIONS             /admin/sessionactivity/details/
+sessionactivity.edit_view                            GET, HEAD, OPTIONS, POST       /admin/sessionactivity/edit/
+sessionactivity.export                               GET, HEAD, OPTIONS             /admin/sessionactivity/export/<export_type>/
+sessionactivity.index_view                           GET, HEAD, OPTIONS             /admin/sessionactivity/
+shibboleth.index                                     GET, HEAD, OPTIONS, POST       /admin/shibboleth/
+site_info.index                                      GET, HEAD, OPTIONS, POST       /admin/site_info/
+sitelicensesendmail.index                            GET, HEAD, OPTIONS, POST       /admin/sitelicensesendmail/
+sitelicensesettings.index                            GET, HEAD, OPTIONS, POST       /admin/sitelicensesettings/
+sitemap.get_task_status                              GET, HEAD, OPTIONS             /admin/sitemap/task_status/<string:task_id>
+sitemap.index                                        GET, HEAD, OPTIONS             /admin/sitemap/
+sitemap.update_sitemap                               OPTIONS, POST                  /admin/sitemap/update_sitemap
+static                                               GET, HEAD, OPTIONS             /static/<path:filename>
+statssettings.index                                  GET, HEAD, OPTIONS, POST       /admin/statssettings/
+stylesetting.index                                   GET, HEAD, OPTIONS, POST       /admin/stylesetting/
+stylesetting.upload_editor                           OPTIONS, POST                  /admin/stylesetting/upload_editor
+token.action_view                                    OPTIONS, POST                  /admin/token/action/
+token.ajax_lookup                                    GET, HEAD, OPTIONS             /admin/token/ajax/lookup/
+token.ajax_update                                    OPTIONS, POST                  /admin/token/ajax/update/
+token.create_view                                    GET, HEAD, OPTIONS, POST       /admin/token/new/
+token.delete_view                                    OPTIONS, POST                  /admin/token/delete/
+token.details_view                                   GET, HEAD, OPTIONS             /admin/token/details/
+token.edit_view                                      GET, HEAD, OPTIONS, POST       /admin/token/edit/
+token.export                                         GET, HEAD, OPTIONS             /admin/token/export/<export_type>/
+token.index_view                                     GET, HEAD, OPTIONS             /admin/token/
+user.action_view                                     OPTIONS, POST                  /admin/user/action/
+user.ajax_lookup                                     GET, HEAD, OPTIONS             /admin/user/ajax/lookup/
+user.ajax_update                                     OPTIONS, POST                  /admin/user/ajax/update/
+user.create_view                                     GET, HEAD, OPTIONS, POST       /admin/user/new/
+user.delete_view                                     OPTIONS, POST                  /admin/user/delete/
+user.details_view                                    GET, HEAD, OPTIONS             /admin/user/details/
+user.edit_view                                       GET, HEAD, OPTIONS, POST       /admin/user/edit/
+user.export                                          GET, HEAD, OPTIONS             /admin/user/export/<export_type>/
+user.index_view                                      GET, HEAD, OPTIONS             /admin/user/
+useridentity.action_view                             OPTIONS, POST                  /admin/useridentity/action/
+useridentity.ajax_lookup                             GET, HEAD, OPTIONS             /admin/useridentity/ajax/lookup/
+useridentity.ajax_update                             OPTIONS, POST                  /admin/useridentity/ajax/update/
+useridentity.create_view                             GET, HEAD, OPTIONS, POST       /admin/useridentity/new/
+useridentity.delete_view                             OPTIONS, POST                  /admin/useridentity/delete/
+useridentity.details_view                            GET, HEAD, OPTIONS             /admin/useridentity/details/
+useridentity.edit_view                               GET, HEAD, OPTIONS, POST       /admin/useridentity/edit/
+useridentity.export                                  GET, HEAD, OPTIONS             /admin/useridentity/export/<export_type>/
+useridentity.index_view                              GET, HEAD, OPTIONS             /admin/useridentity/
+userprofile.action_view                              OPTIONS, POST                  /admin/userprofile/action/
+userprofile.ajax_lookup                              GET, HEAD, OPTIONS             /admin/userprofile/ajax/lookup/
+userprofile.ajax_update                              OPTIONS, POST                  /admin/userprofile/ajax/update/
+userprofile.create_view                              GET, HEAD, OPTIONS, POST       /admin/userprofile/new/
+userprofile.delete_view                              OPTIONS, POST                  /admin/userprofile/delete/
+userprofile.details_view                             GET, HEAD, OPTIONS             /admin/userprofile/details/
+userprofile.edit_view                                GET, HEAD, OPTIONS, POST       /admin/userprofile/edit/
+userprofile.export                                   GET, HEAD, OPTIONS             /admin/userprofile/export/<export_type>/
+userprofile.index_view                               GET, HEAD, OPTIONS             /admin/userprofile/
+webapiaccount.index                                  GET, HEAD, OPTIONS, POST       /admin/webapiaccount/
+weko_accounts.confirm_user                           OPTIONS, POST                  /weko/confim/user
+weko_accounts.index                                  GET, HEAD, OPTIONS             /weko/
+weko_accounts.shib_auto_login                        GET, HEAD, OPTIONS             /weko/auto/login
+weko_accounts.shib_login                             GET, HEAD, OPTIONS             /weko/shib/login
+weko_accounts.shib_logout                            GET, HEAD, OPTIONS             /weko/shib/logout
+weko_accounts.shib_sp_login                          OPTIONS, POST                  /weko/shib/login
+weko_accounts.shib_stub_login                        GET, HEAD, OPTIONS             /weko/shib/sp/login
+weko_accounts.static                                 GET, HEAD, OPTIONS             /weko/static/<path:filename>
+weko_activity_rest.workflow_activity_action          DELETE, GET, HEAD, OPTIONS     /depositactivity/<string:activity_id>
+weko_activity_rest.workflow_activity_new             OPTIONS, POST                  /depositactivity
+weko_admin.lifetime                                  GET, HEAD, OPTIONS, POST       /accounts/settings/session/
+weko_admin.lifetime                                  GET, HEAD, OPTIONS, POST       /accounts/settings/session
+weko_admin.session_info_offline                      GET, HEAD, OPTIONS             /accounts/settings/session/offline/info
+weko_admin.set_lifetime                              GET, HEAD, OPTIONS             /accounts/settings/session/lifetime/<int:minutes>
+weko_admin.static                                    GET, HEAD, OPTIONS             /accounts/settings/static/<path:filename>
+weko_authors.static                                  GET, HEAD, OPTIONS             /authors/static/<path:filename>
+weko_bulkupdate.index                                GET, HEAD, OPTIONS             /bulkupdate/
+weko_bulkupdate.static                               GET, HEAD, OPTIONS             /bulkupdate/static/<path:filename>
+weko_deposit.static                                  GET, HEAD, OPTIONS             /static/<path:filename>
+weko_gridlayout.index                                GET, HEAD, OPTIONS             /
+weko_gridlayout.static                               GET, HEAD, OPTIONS             /static/<path:filename>
+weko_gridlayout.upload_file                          OPTIONS, POST                  /widget/uploads/<string:community_id>
+weko_gridlayout.upload_file                          OPTIONS, POST                  /widget/uploads/
+weko_gridlayout.uploaded_file                        GET, HEAD, OPTIONS             /widget/uploaded/<string:filename>/<string:community_id>
+weko_gridlayout.uploaded_file                        GET, HEAD, OPTIONS             /widget/uploaded/<string:filename>
+weko_gridlayout_pages.static                         GET, HEAD, OPTIONS             /static/<path:filename>
+weko_gridlayout_rss.get_rss_data                     GET, HEAD, OPTIONS             /rss/records
+weko_gridlayout_rss.static                           GET, HEAD, OPTIONS             /rss/static/<path:filename>
+weko_groups.accept                                   OPTIONS, POST                  /accounts/settings/groups/<int:group_id>/members/accept
+weko_groups.approve                                  OPTIONS, POST                  /accounts/settings/groups/<int:group_id>/members/<int:user_id>/approve
+weko_groups.delete                                   OPTIONS, POST                  /accounts/settings/groups/<int:group_id>/delete
+weko_groups.groupcount                               GET, HEAD, OPTIONS             /accounts/settings/groups/groupcount
+weko_groups.grouplist                                GET, HEAD, OPTIONS             /accounts/settings/groups/grouplist
+weko_groups.index                                    GET, HEAD, OPTIONS             /accounts/settings/groups/index
+weko_groups.index                                    GET, HEAD, OPTIONS             /accounts/settings/groups/
+weko_groups.invitations                              GET, HEAD, OPTIONS             /accounts/settings/groups/invitations
+weko_groups.leave                                    OPTIONS, POST                  /accounts/settings/groups/<int:group_id>/leave
+weko_groups.manage                                   GET, HEAD, OPTIONS, POST       /accounts/settings/groups/<int:group_id>/manage
+weko_groups.manage                                   GET, HEAD, OPTIONS, POST       /accounts/settings/groups/<int:group_id>/
+weko_groups.members                                  GET, HEAD, OPTIONS, POST       /accounts/settings/groups/<int:group_id>/members
+weko_groups.new                                      GET, HEAD, OPTIONS, POST       /accounts/settings/groups/new
+weko_groups.new_member                               GET, HEAD, OPTIONS, POST       /accounts/settings/groups/<int:group_id>/members/new
+weko_groups.reject                                   OPTIONS, POST                  /accounts/settings/groups/<int:group_id>/members/reject
+weko_groups.remove                                   OPTIONS, POST                  /accounts/settings/groups/<int:group_id>/members/<int:user_id>/remove
+weko_groups.requests                                 GET, HEAD, OPTIONS             /accounts/settings/groups/requests
+weko_groups.static                                   GET, HEAD, OPTIONS             /accounts/settings/groups/static/<path:filename>
+weko_handle.index                                    GET, HEAD, OPTIONS             /handle/
+weko_handle.index                                    GET, HEAD, OPTIONS             /handle/
+weko_handle.register_handle                          OPTIONS, POST                  /handle/register
+weko_handle.register_handle                          OPTIONS, POST                  /handle/register
+weko_handle.retrieve_handle                          OPTIONS, POST                  /handle/retrieve
+weko_handle.retrieve_handle                          OPTIONS, POST                  /handle/retrieve
+weko_handle.static                                   GET, HEAD, OPTIONS             /handle/static/<path:filename>
+weko_handle.static                                   GET, HEAD, OPTIONS             /handle/static/<path:filename>
+weko_index_tree.static                               GET, HEAD, OPTIONS             /indextree/static/<path:filename>
+weko_indextree_journal.check_view                    GET, HEAD, OPTIONS             /indextree/journal/save/kbart
+weko_indextree_journal.check_view                    GET, HEAD, OPTIONS             /indextree/journal/save/kbart
+weko_indextree_journal.export_journals               GET, HEAD, OPTIONS             /indextree/journal/export
+weko_indextree_journal.export_journals               GET, HEAD, OPTIONS             /indextree/journal/export
+weko_indextree_journal.static                        GET, HEAD, OPTIONS             /indextree/journal/static/<path:filename>
+weko_indextree_journal.static                        GET, HEAD, OPTIONS             /indextree/journal/static/<path:filename>
+weko_items_autofill.index                            GET, HEAD, OPTIONS             /autofill/
+weko_items_autofill.static                           GET, HEAD, OPTIONS             /autofill/static/<path:filename>
+weko_items_ui.corresponding_activity_list            GET, HEAD, OPTIONS             /items/corresponding-activity
+weko_items_ui.corresponding_activity_list            GET, HEAD, OPTIONS             /items/
+weko_items_ui.export                                 GET, HEAD, OPTIONS, POST       /items/export
+weko_items_ui.get_json_schema                        GET, HEAD, OPTIONS             /items/jsonschema/<int:item_type_id>/<string:activity_id>
+weko_items_ui.get_json_schema                        GET, HEAD, OPTIONS             /items/jsonschema/<int:item_type_id>
+weko_items_ui.get_schema_form                        GET, HEAD, OPTIONS             /items/schemaform/<int:item_type_id>/<string:activity_id>
+weko_items_ui.get_schema_form                        GET, HEAD, OPTIONS             /items/schemaform/<int:item_type_id>
+weko_items_ui.iframe_error                           GET, HEAD, OPTIONS             /items/iframe/error
+weko_items_ui.iframe_index                           GET, HEAD, OPTIONS             /items/iframe
+weko_items_ui.iframe_index                           GET, HEAD, OPTIONS             /items/iframe/<int:item_type_id>
+weko_items_ui.iframe_items_index                     GET, HEAD, OPTIONS, POST, PUT  /items/iframe/index/<string:pid_value>
+weko_items_ui.iframe_save_model                      OPTIONS, POST                  /items/iframe/model/save
+weko_items_ui.iframe_success                         GET, HEAD, OPTIONS             /items/iframe/success
+weko_items_ui.index                                  GET, HEAD, OPTIONS             /items/
+weko_items_ui.index                                  GET, HEAD, OPTIONS             /items/<int:item_type_id>
+weko_items_ui.index_upload                           GET, HEAD, OPTIONS             /items/upload
+weko_items_ui.items_index                            GET, HEAD, OPTIONS, POST, PUT  /items/index/<string:pid_value>
+weko_items_ui.ranking                                GET, HEAD, OPTIONS             /items/ranking
+weko_items_ui.session_validate                       OPTIONS, POST                  /items/sessionvalidate
+weko_items_ui.static                                 GET, HEAD, OPTIONS             /items/static/<path:filename>
+weko_items_ui.validate_bibtex_export                 OPTIONS, POST                  /items/validate_bibtext_export
+weko_itemtypes_ui.static                             GET, HEAD, OPTIONS             /itemtypes/static/<path:filename>
+weko_records_ui.doi_ish_view_method                  GET, HEAD, OPTIONS             /r/<parent_pid_value>.<int:version>
+weko_records_ui.doi_ish_view_method                  GET, HEAD, OPTIONS             /r/<parent_pid_value>
+weko_records_ui.file_version_update                  OPTIONS, PUT                   /file_version/update
+weko_records_ui.get_uri                              OPTIONS, POST                  /get_uri
+weko_records_ui.init_permission                      OPTIONS, POST                  /records/permission/<recid>
+weko_records_ui.parent_view_method                   GET, HEAD, OPTIONS             /records/parent:<pid_value>
+weko_records_ui.restore                              OPTIONS, POST                  /records/restore/<recid>
+weko_records_ui.set_pdfcoverpage_header              GET, HEAD, OPTIONS, POST       /admin/pdfcoverpage
+weko_records_ui.soft_delete                          OPTIONS, POST                  /records/soft_delete/<recid>
+weko_records_ui.static                               GET, HEAD, OPTIONS             /static/<path:filename>
+weko_schema_ui.static                                GET, HEAD, OPTIONS             /static/<path:filename>
+weko_search_ui.get_child_list                        GET, HEAD, OPTIONS             /get_child_list/<int:index_id>
+weko_search_ui.get_path_name_dict                    GET, HEAD, OPTIONS             /get_path_name_dict/<string:path_str>
+weko_search_ui.gettitlefacet                         OPTIONS, POST                  /facet-search/get-title-and-order
+weko_search_ui.journal_detail                        GET, HEAD, OPTIONS             /journal_info/<int:index_id>
+weko_search_ui.search                                GET, HEAD, OPTIONS             /search/index
+weko_search_ui.search_feedback_mail_list             GET, HEAD, OPTIONS             /search/feedback_mail_list
+weko_search_ui.static                                GET, HEAD, OPTIONS             /static/<path:filename>
+weko_sitemap.display_robots_txt                      GET, HEAD, OPTIONS             /robots.txt
+weko_sitemap.static                                  GET, HEAD, OPTIONS             /static/<path:filename>
+weko_swordserver.delete_item                         DELETE, OPTIONS                /sword/deposit/<recid>
+weko_swordserver.get_service_document                GET, HEAD, OPTIONS             /sword/service-document
+weko_swordserver.get_status_document                 GET, HEAD, OPTIONS             /sword/deposit/<recid>
+weko_swordserver.post_service_document               OPTIONS, POST                  /sword/service-document
+weko_swordserver.static                              GET, HEAD, OPTIONS             /sword/static/<path:filename>
+weko_theme.edit                                      GET, HEAD, OPTIONS             /edit
+weko_theme.get_default_search_setting                GET, HEAD, OPTIONS             /get_search_setting
+weko_theme.index                                     GET, HEAD, OPTIONS             /
+weko_theme.static                                    GET, HEAD, OPTIONS             /static/<path:filename>
+weko_user_profiles.profile                           GET, HEAD, OPTIONS, POST       /account/settings/profile/
+weko_workflow.cancel_action                          OPTIONS, POST                  /workflow/activity/action/<string:activity_id>/<int:action_id>/cancel
+weko_workflow.check_approval                         GET, HEAD, OPTIONS             /workflow/check_approval/<string:activity_id>
+weko_workflow.clear_activitylog                      GET, HEAD, OPTIONS             /workflow/clear_activitylog/
+weko_workflow.display_activity                       GET, HEAD, OPTIONS, POST       /workflow/activity/detail/<string:activity_id>
+weko_workflow.display_guest_activity                 GET, HEAD, OPTIONS             /workflow/activity/guest-user/<string:file_name>
+weko_workflow.download_activitylog                   GET, HEAD, OPTIONS, POST       /workflow/download_activitylog/
+weko_workflow.find_doi                               OPTIONS, POST                  /workflow/findDOI
+weko_workflow.get_data_init                          GET, HEAD, OPTIONS             /workflow/get-data-init
+weko_workflow.get_feedback_maillist                  GET, HEAD, OPTIONS             /workflow/get_feedback_maillist/<string:activity_id>
+weko_workflow.get_journal                            GET, HEAD, OPTIONS             /workflow/journal/<string:method>/<string:value>
+weko_workflow.get_journals                           GET, HEAD, OPTIONS             /workflow/journal/list
+weko_workflow.iframe_success                         GET, HEAD, OPTIONS             /workflow/iframe/success
+weko_workflow.index                                  GET, HEAD, OPTIONS             /workflow/
+weko_workflow.init_activity                          OPTIONS, POST                  /workflow/activity/init
+weko_workflow.init_activity_guest                    OPTIONS, POST                  /workflow/activity/init-guest
+weko_workflow.is_user_locked                         GET, HEAD, OPTIONS             /workflow/activity/user_lock
+weko_workflow.list_activity                          GET, HEAD, OPTIONS             /workflow/activity/list
+weko_workflow.lock_activity                          OPTIONS, POST                  /workflow/activity/lock/<string:activity_id>
+weko_workflow.new_activity                           GET, HEAD, OPTIONS             /workflow/activity/new
+weko_workflow.next_action                            OPTIONS, POST                  /workflow/activity/action/<string:activity_id>/<int:action_id>
+weko_workflow.previous_action                        OPTIONS, POST                  /workflow/activity/action/<string:activity_id>/<int:action_id>/rejectOrReturn/<int:req>
+weko_workflow.save_activity                          OPTIONS, POST                  /workflow/save_activity_data
+weko_workflow.save_feedback_maillist                 OPTIONS, POST                  /workflow/save_feedback_maillist/<string:activity_id>/<int:action_id>
+weko_workflow.send_mail                              OPTIONS, POST                  /workflow/send_mail/<string:activity_id>/<string:mail_template>
+weko_workflow.static                                 GET, HEAD, OPTIONS             /workflow/static/<path:filename>
+weko_workflow.unlock_activity                        OPTIONS, POST                  /workflow/activity/unlock/<string:activity_id>
+weko_workflow.unlocks_activity                       OPTIONS, POST                  /workflow/activity/unlocks/<string:activity_id>
+weko_workflow.usage_report                           GET, HEAD, OPTIONS             /workflow/usage-report
+weko_workflow.user_lock_activity                     OPTIONS, POST                  /workflow/activity/user_lock/<string:activity_id>
+weko_workflow.user_unlock_activity                   OPTIONS, POST                  /workflow/activity/user_unlock/<string:activity_id>
+weko_workflow.verify_deletion                        GET, HEAD, OPTIONS             /workflow/verify_deletion/<string:activity_id>
+weko_workflow.withdraw_confirm                       OPTIONS, POST                  /workflow/activity/detail/<string:activity_id>/<int:action_id>/withdraw
+widgetdesign.index                                   GET, HEAD, OPTIONS, POST       /admin/widgetdesign/
+widgetitem.action_view                               OPTIONS, POST                  /admin/widgetitem/action/
+widgetitem.ajax_lookup                               GET, HEAD, OPTIONS             /admin/widgetitem/ajax/lookup/
+widgetitem.ajax_update                               OPTIONS, POST                  /admin/widgetitem/ajax/update/
+widgetitem.create_view                               GET, HEAD, OPTIONS, POST       /admin/widgetitem/new/
+widgetitem.delete_view                               OPTIONS, POST                  /admin/widgetitem/delete/
+widgetitem.details_view                              GET, HEAD, OPTIONS             /admin/widgetitem/details/
+widgetitem.edit_view                                 GET, HEAD, OPTIONS, POST       /admin/widgetitem/edit/
+widgetitem.export                                    GET, HEAD, OPTIONS             /admin/widgetitem/export/<export_type>/
+widgetitem.index_view                                GET, HEAD, OPTIONS             /admin/widgetitem/
+workflowsetting.delete_workflow                      DELETE, OPTIONS                /admin/workflowsetting/<string:workflow_id>
+workflowsetting.index                                GET, HEAD, OPTIONS             /admin/workflowsetting/
+workflowsetting.update_workflow                      OPTIONS, POST, PUT             /admin/workflowsetting/<string:workflow_id>
+workflowsetting.workflow_detail                      GET, HEAD, OPTIONS             /admin/workflowsetting/<string:workflow_id>

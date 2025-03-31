@@ -31,6 +31,7 @@ from invenio_accounts.models import Role, User
 from invenio_db import db
 from invenio_files_rest.models import Location
 from invenio_i18n.ext import current_i18n
+from weko_admin.utils import sanitize_html_string
 from weko_index_tree.models import Index
 from weko_records.api import ItemTypes
 from weko_records.models import ItemTypeProperty
@@ -296,6 +297,19 @@ class WorkFlowSettingView(BaseView):
                 hides = []
             wf.display = ',<br>'.join(displays)
             wf.hide = ',<br>'.join(hides)
+
+            wf.itemtype.item_type_name.name = _(wf.itemtype.item_type_name.name)
+            wf.flow_define.flow_name = _(wf.flow_define.flow_name)
+            wf.display = sanitize_html_string(
+                wf.display,
+                allow_tags=["br"],
+                strip=False
+            )
+            wf.hide = sanitize_html_string(
+                wf.hide,
+                allow_tags=["br"],
+                strip=False
+            )
 
         display_label = self.get_language_workflows("display")
 

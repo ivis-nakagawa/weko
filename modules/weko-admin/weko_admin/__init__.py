@@ -22,5 +22,6 @@
 
 from .ext import WekoAdmin
 from .version import __version__
+from .app import Flask #必須
 
 __all__ = ('__version__', 'WekoAdmin')

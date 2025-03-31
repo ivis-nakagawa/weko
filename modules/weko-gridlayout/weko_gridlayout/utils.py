@@ -44,6 +44,7 @@ from simplekv.memory.redisstore import RedisStore
 from sqlalchemy import asc
 from sqlalchemy.orm.exc import MultipleResultsFound
 from weko_admin.models import AdminLangSettings
+from weko_admin.utils import escape_filename
 from weko_index_tree.api import Indexes
 from weko_records.api import Mapping, ItemTypes
 from weko_records.serializers.utils import get_mapping
@@ -246,7 +247,7 @@ def build_data(data):
     result['is_enabled'] = data.get('enable')
 
     multi_lang_data = data.get('multiLangSetting').copy()
-    _escape_html_multi_lang_setting(multi_lang_data)
+    # _escape_html_multi_lang_setting(multi_lang_data)
     result['multiLangSetting'] = multi_lang_data
 
     result['is_deleted'] = False
@@ -313,14 +314,18 @@ def _build_access_counter_setting_data(result, setting):
     :param result:
     :param setting:
     """
-    result['access_counter'] = Markup.escape(
-        setting.get('access_counter')) or '0'
-    result['following_message'] = Markup.escape(
-        setting.get('following_message')) or ''
-    result['other_message'] = Markup.escape(
-        setting.get('other_message')) or ''
-    result['preceding_message'] = Markup.escape(
-        setting.get('preceding_message')) or ''
+    # result['access_counter'] = Markup.escape(
+    #     setting.get('access_counter')) or '0'
+    # result['following_message'] = Markup.escape(
+    #     setting.get('following_message')) or ''
+    # result['other_message'] = Markup.escape(
+    #     setting.get('other_message')) or ''
+    # result['preceding_message'] = Markup.escape(
+    #     setting.get('preceding_message')) or ''
+    result['access_counter'] = setting.get('access_counter') or '0'
+    result['following_message'] = setting.get('following_message') or ''
+    result['other_message'] = setting.get('other_message') or ''
+    result['preceding_message'] = setting.get('preceding_message') or ''
 
 
 def _build_new_arrivals_setting_data(result, setting):
@@ -329,10 +334,14 @@ def _build_new_arrivals_setting_data(result, setting):
     :param result:
     :param setting:
     """
-    result['new_dates'] = Markup.escape(
-        setting.get('new_dates')) or config.WEKO_GRIDLAYOUT_DEFAULT_NEW_DATE
-    result['display_result'] = Markup.escape(setting.get(
-        'display_result')) or config.WEKO_GRIDLAYOUT_DEFAULT_DISPLAY_RESULT
+    # result['new_dates'] = Markup.escape(
+    #     setting.get('new_dates')) or config.WEKO_GRIDLAYOUT_DEFAULT_NEW_DATE
+    # result['display_result'] = Markup.escape(setting.get(
+    #     'display_result')) or config.WEKO_GRIDLAYOUT_DEFAULT_DISPLAY_RESULT
+    result['new_dates'] = setting.get('new_dates') \
+        or config.WEKO_GRIDLAYOUT_DEFAULT_NEW_DATE
+    result['display_result'] = setting.get('display_result') \
+        or config.WEKO_GRIDLAYOUT_DEFAULT_DISPLAY_RESULT
     result['rss_feed'] = setting.get('rss_feed') or False
 
 
@@ -342,8 +351,10 @@ def _build_notice_setting_data(result, setting):
     :param result:
     :param setting:
     """
-    result['hide_the_rest'] = Markup.escape(setting.get('setting'))
-    result['read_more'] = Markup.escape(setting.get('read_more'))
+    # result['hide_the_rest'] = Markup.escape(setting.get('setting'))
+    # result['read_more'] = Markup.escape(setting.get('read_more'))
+    result['hide_the_rest'] = setting.get('setting')
+    result['read_more'] = setting.get('read_more')
 
 
 def _build_header_setting_data(result, setting):
@@ -376,7 +387,8 @@ def build_multi_lang_data(widget_id, multi_lang_json):
         new_lang_data = dict()
         new_lang_data['widget_id'] = widget_id
         new_lang_data['lang_code'] = k
-        new_lang_data['label'] = Markup.escape(v.get('label'))
+        # new_lang_data['label'] = Markup.escape(v.get('label'))
+        new_lang_data['label'] = v.get('label')
         new_lang_data['description_data'] = json.dumps(v.get('description'))
         result.append(new_lang_data)
     return result
@@ -919,8 +931,11 @@ def get_widget_design_setting(repository_id, current_language, page_id=None):
             widget_setting_data = WidgetDesignServices\
                 .get_widget_design_setting(
                     repository_id, lang_code)
+        print(f"---------------------------------------------")
+        print(f"widget_setting_data: {widget_setting_data}")
         return jsonify(widget_setting_data)
 
+    print(f"======================================== get_widget_design_setting ========================================")
     if validate_response() and current_language:
         if page_id:
             key = (config.WEKO_GRIDLAYOUT_WIDGET_PAGE_CACHE_KEY
@@ -928,11 +943,13 @@ def get_widget_design_setting(repository_id, current_language, page_id=None):
         else:
             key = (config.WEKO_GRIDLAYOUT_WIDGET_CACHE_KEY
                    + repository_id + "_" + current_language)
+        print(f"current_cache.get({key}): {current_cache.get(key)}")
         if current_cache.get(key) is None:
             data = compress_widget_response(get_widget_response(page_id))
             current_cache.set(key, data)
             return data
         else:
+            print(f"キャッシュ: {current_cache.get(key).data}")
             return current_cache.get(key)
     else:
         return get_widget_response(page_id)
@@ -1075,7 +1092,7 @@ class WidgetBucket:
                 )
                 db.session.commit()
                 rtn["url"] = "/widget/uploaded/{}/{}".format(
-                    file_name,community_id
+                    escape_filename(file_name),community_id
                 )
                 return rtn
         except UnexpectedFileSizeError as error:
@@ -1091,7 +1108,7 @@ class WidgetBucket:
             rtn['duplicated'] = True
             rtn['msg'] = str(error.errors)
             rtn["url"] = "/widget/uploaded/{}/{}".format(
-                file_name, community_id
+                escape_filename(file_name), community_id
             )
             return rtn
         except Exception as ex:

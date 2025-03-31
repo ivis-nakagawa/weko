@@ -105,7 +105,7 @@ var loadDataForInputType = function () {
       }
       let options = '';
       for (let i = 0; i < results.length; i++) {
-        options += '<option value="' + results[i].api_code + '">' + results[i].api_name + '</option>';
+        options += '<option value="' + results[i].api_code + '">' + _.escape(results[i].api_name) + '</option>';
       }
       const select = $('#input_type');
       select.append(options);

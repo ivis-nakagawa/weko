@@ -17097,12 +17097,23 @@
   // else if (freeModule) {
   if (freeModule) {
     // Export for Node.js.
-    (freeModule.exports = _)._ = _;
+    if (freeModule.exports._) {
+      Object.assign(freeModule.exports._, _);
+    } else {
+      (freeModule.exports = _)._ = _;
+    }
     // Export for CommonJS support.
-    freeExports._ = _;
-  }
-  else {
+    if (freeExports._) {
+      Object.assign(freeExports._, _);
+    } else {
+      freeExports._ = _;
+    }
+  } else {
     // Export to the global object.
-    root._ = _;
+    if (root._) {
+      Object.assign(root._, _);
+    } else {
+      root._ = _;
+    }
   }
 }.call(this));

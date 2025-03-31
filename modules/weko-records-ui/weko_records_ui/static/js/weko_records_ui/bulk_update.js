@@ -200,7 +200,7 @@ require([
                         var after_licence = licence ? licence : before_licence;
                         $('#table_list_of_update > tbody').append(
                          '<tr>' +
-                         '<td>' + content[i]['filename'] + '</td>' +
+                         '<td>' + _.escape(content[i]['filename']) + '</td>' +
                          '<td>' + before_access_type + '</td>' +
                          '<td>' + before_licence + '</td>' +
                          '<td>' + after_access_type + '</td>' +

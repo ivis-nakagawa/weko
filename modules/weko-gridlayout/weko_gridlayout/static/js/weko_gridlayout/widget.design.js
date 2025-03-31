@@ -1079,7 +1079,7 @@ var PreviewGrid = new function () {
     if (node.created_date) {
       createdDate = '" data-created_date="' + node.created_date + '"';
     }
-    let template = '<div data-type="' + node.type + '" data-name="' + node.name + '" data-id="' + node.id + '"'
+    let template = '<div data-type="' + node.type + '" data-name="' + _.escape(node.name) + '" data-id="' + node.id + '"'
       + '" data-widget_id="' + node.widget_id + '"' + autoPosition + createdDate + '>'
       + ' <div class="center-block" style="margin-top: 4px;">'
       + '   <div class="col-xs-6 text-left" style="z-index: 90;">'
@@ -1091,7 +1091,7 @@ var PreviewGrid = new function () {
       + '</div>'
       + ' <div class="grid-stack-item-content">'
       + '     <span class="widget-label">&lt;' + node.type + '&gt;</span>'
-      + '     <span class="widget-label">' + node.name + '</span>'
+      + '     <span class="widget-label">' + _.escape(node.name) + '</span>'
       + ' </div>'
       + '<div/>';
     return template;
@@ -1198,9 +1198,9 @@ function loadWidgetList(widgetListItems) {
       +     '<div class="glyphicon glyphicon-cog pointer" data-id="' + widget.Id +'"></div>'
       + ' </div>'
       + ' <span class="widget-label" >&lt;' + widgetType + '&gt;</span>'
-      + ' <span class="widget-label">' + widget.label + '</span>'
+      + ' <span class="widget-label">' + _.escape(widget.label) + '</span>'
       + ' <button ' + buttonId + ' data-widget-type="' + widgetType
-      + '" data-widget-name="' + escapeHtml(widget.label) + '" data-widget-id="' + widget['widgetId']
+      + '" data-widget-name="' + _.escape(widget.label) + '" data-widget-id="' + widget['widgetId']
       + '" data-id="' + widget.Id + '" class="btn btn-default add-new-widget ' + buttonClass + '">'
       + ' Add Widget'
       + ' </button>'

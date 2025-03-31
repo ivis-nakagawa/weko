@@ -574,6 +574,7 @@ class WidgetDesignServices:
         try:
             widget_setting = WidgetDesignSetting.select_by_repository_id(
                 repository_id)
+            print(f"widget_setting: {widget_setting}")
             if widget_setting:
                 settings = widget_setting.get('settings')
                 result['widget-settings'] = cls._get_setting(settings,
@@ -845,8 +846,7 @@ class WidgetDesignPageServices:
         is_main_layout = data.get('is_main_layout')
         try:
             WidgetDesignPage.create_or_update(
-                repository_id, Markup.escape(title), url,
-                Markup.escape(content), page_id=page_id,
+                repository_id, title, url, content, page_id=page_id,
                 settings=settings, multi_lang_data=multi_lang_data,
                 is_main_layout=is_main_layout
             )
@@ -1110,8 +1110,8 @@ class WidgetDataLoaderServices:
                 must_not=json.dumps([{"wildcard": {"control_number": "*.*"}}])
             )
             if not res:
-                res['error'] = 'Cannot search data'
-                return res
+                result['error'] = 'Cannot search data'
+                return result
 
             index_json = Indexes.get_browsing_tree_ignore_more()
             index_info = {}

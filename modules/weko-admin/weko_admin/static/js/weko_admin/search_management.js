@@ -296,6 +296,9 @@ const SPECIFIC_INDEX_VALUE = '1';
         $.get(url)
           .done(function (data) {
             let jstree = $scope.treeInstance.jstree(true);
+            data.indexes.forEach(function (node) {
+              node.text = _.escape(node.text);
+            });
             jstree.settings.core.data = data.indexes;
             jstree.refresh();
             let currentNode = jstree.get_node({"id": initDispIndex});

@@ -253,7 +253,7 @@ const PageBodyGrid = function () {
             templateWriteMoreNotice = '</br>' +
                 '<div id="' + moreDescriptionID + '" class="hidden">' + moreDescription + '</div>' +
                 '<a style="padding-bottom:35px;" id="' + linkID + '" class="writeMoreNoT" onclick="handleMoreNoT(\'' + moreDescriptionID + '\',\'' +
-                linkID + '\',\'' + escapeHtml(readMore) + '\', \'' + escapeHtml(hideRest) + '\')">' + readMore +
+                linkID + '\',\'' + _.escape(readMore) + '\', \'' + _.escape(hideRest) + '\')">' + readMore +
                 '</a>';
         }
 
@@ -282,10 +282,10 @@ const PageBodyGrid = function () {
 
         return '<div>'
                 + ' <div class="counter-container">'
-                +       precedingMessage + '<span data-widget-id="' + widgetId + '" data-created-date="' + created_date
-                + '" class = "text-access-counter">' + result + '</span>' + followingMessage
+                +       _.escape(precedingMessage) + '<span data-widget-id="' + widgetId + '" data-created-date="' + created_date
+                + '" class = "text-access-counter">' + result + '</span>' + _.escape(followingMessage)
                 + ' </div>'
-                + ' <div>' + otherMessage + '</div>'
+                + ' <div>' + _.escape(otherMessage) + '</div>'
                 + '</div>';
     };
 
@@ -309,7 +309,7 @@ const PageBodyGrid = function () {
                 let innerHTML = '<div class= "rss text-right">' + rssHtml + '</div>'
                     + '<div>';
                 for (let data in result) {
-                    innerHTML += '<div class="no-li-style no-padding-col"><li><a class="a-new-arrivals arrival-scale" href="' + result[data].url + '">' + result[data].name + '</a></li></div>';
+                    innerHTML += '<div class="no-li-style no-padding-col"><li><a class="a-new-arrivals arrival-scale" href="' + result[data].url + '">' + _.escape(result[data].name) + '</a></li></div>';
                 }
                 innerHTML += '</div>';
                 $("#" + id).append(innerHTML);
@@ -345,7 +345,7 @@ const PageBodyGrid = function () {
                     if (window.location.pathname === endpointsURL) {
                       liClass = 'class="active"';
                     }
-                    childNavBar += '<li ' + liClass + '><a href="' + endpointsURL + communityArgs + '">' + title + '</a></li>';
+                    childNavBar += '<li ' + liClass + '><a href="' + endpointsURL + communityArgs + '">' + _.escape(title) + '</a></li>';
                   }
                 }
 
@@ -362,7 +362,7 @@ const PageBodyGrid = function () {
                   }
                   navbarHeader =
                     '<div class="navbar-header">' +
-                    '  <a class="navbar-brand '+ mainLayoutActive +'" href="' + repoHomeURL + '">' + mainLayoutTitle + '</a>' +
+                    '  <a class="navbar-brand '+ mainLayoutActive +'" href="' + repoHomeURL + '">' + _.escape(mainLayoutTitle) + '</a>' +
                     '</div>';
                 }
 
@@ -471,7 +471,7 @@ const PageBodyGrid = function () {
             }
         }
         let widget_data = {
-            'header': multiLangSetting.label,
+            'header': _.escape(multiLangSetting.label),
             'body': content,
             'id': id
         };
@@ -727,8 +727,8 @@ function autoAdjustWidgetHeight(widgetElement, pageBodyGrid, otherElement) {
           let height = DEFAULT_WIDGET_HEIGHT > widgetHeight - 1 ? DEFAULT_WIDGET_HEIGHT : widgetHeight - 1;
           pageBodyGrid.resizeWidget(parent, width, height);
           //pageBodyGrid.resizeWidget(parent, width, height);
-          console.log("currentClientHeight: "+ currentClientHeight);
-          console.log("scrollHeight: "+ scrollHeight);
+          // console.log("currentClientHeight: "+ currentClientHeight);
+          // console.log("scrollHeight: "+ scrollHeight);
 
 
         } else {

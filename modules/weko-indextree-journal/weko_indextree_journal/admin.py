@@ -31,6 +31,7 @@ from flask_admin import BaseView, expose
 from flask_babelex import gettext as _
 from flask_login import login_required
 from invenio_i18n.ext import current_i18n
+from weko_admin.utils import escape_double_curly_braces
 from weko_records.api import ItemTypes
 
 from .api import Journals
@@ -89,7 +90,7 @@ class IndexJournalSettingView(BaseView):
             upt_tree_json='',
             mod_tree_detail=current_app.config['WEKO_INDEX_TREE_API'],
             mod_journal_detail=current_app.config['WEKO_INDEXTREE_JOURNAL_API'],
-            record=json_record,
+            record=escape_double_curly_braces(json_record),
             jsonschema=current_app.config['WEKO_INDEXTREE_JOURNAL_SCHEMA_JSON_API'],
             schemaform=current_app.config['WEKO_INDEXTREE_JOURNAL_FORM_JSON_API'],
             lists=lists,

@@ -33,6 +33,7 @@ from invenio_admin.proxies import current_admin
 from six.moves.urllib.parse import urlparse
 from sqlalchemy.exc import IntegrityError
 from invenio_db import db
+from weko_admin.utils import sanitize_html_string
 
 from .forms import GroupForm, NewMemberForm
 from .models import Group, Membership
@@ -79,11 +80,7 @@ allow_tags = [
 @blueprint.app_template_filter('sanitize_html_group')
 def sanitize_html_group(value):
     """Sanitizes HTML using the bleach library."""
-    return bleach.clean(
-        value,
-        tags=allow_tags,
-        strip=False
-    ).strip()
+    return sanitize_html_string(value, allow_tags=allow_tags, strip=False)
 
 
 def get_group_name(id_group):

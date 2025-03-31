@@ -364,7 +364,8 @@ def shib_stub_login():
 @blueprint.app_template_filter('urlencode')
 def urlencode(value):
     """Encode url value."""
-    return quote_plus(value)
+    from weko_admin.utils import escape_filename
+    return escape_filename(value)
 
 @blueprint.route('/shib/logout')
 def shib_logout():

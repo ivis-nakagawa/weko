@@ -103,6 +103,15 @@ class PyFSFileStorage(FileStorage):
         """Save file in the file system."""
         fp = self.open(mode='wb')
         try:
+            # print(f"============================= PyFSFileStorage.save =============================")
+            # from weko_admin.utils import sanitize_input_data
+            # # incoming_streamがLimitedStream型のためこれだと無理
+            # text = incoming_stream.decode('utf-8')
+            # sanitized_text = sanitize_input_data(text)
+            # print(f"sanitized_text: {sanitized_text}")
+            # incoming_stream = sanitized_text.encode('utf-8')
+            # print(f"incoming_stream: {incoming_stream}")
+
             bytes_written, checksum = self._write_stream(
                 incoming_stream, fp, chunk_size=chunk_size,
                 progress_callback=progress_callback,
@@ -123,6 +132,15 @@ class PyFSFileStorage(FileStorage):
         """Update a file in the file system."""
         fp = self.open(mode='r+b')
         try:
+            # print(f"============================= PyFSFileStorage.update =============================")
+            # from weko_admin.utils import sanitize_input_data
+            # # incoming_streamがLimitedStream型のためこれだと無理
+            # text = incoming_stream.decode('utf-8')
+            # sanitized_text = sanitize_input_data(text)
+            # print(f"sanitized_text: {sanitized_text}")
+            # incoming_stream = sanitized_text.encode('utf-8')
+            # print(f"incoming_stream: {incoming_stream}")
+
             fp.seek(seek)
             bytes_written, checksum = self._write_stream(
                 incoming_stream, fp, chunk_size=chunk_size,

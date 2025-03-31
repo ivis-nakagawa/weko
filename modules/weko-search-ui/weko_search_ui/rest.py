@@ -226,6 +226,8 @@ class IndexSearchResource(ContentNegotiatedMethodView):
             search = search.post_filter({"terms": {query_key: params[param]}})
 
         search_result = search.execute()
+        print(f"================================== weko_search_ui/rest.py::search_result ==================================")
+        print(f"search: {search.to_dict()}")
         # Generate links for prev/next
         urlkwargs.update(
             size=size,

@@ -28,6 +28,7 @@ from flask_admin import BaseView, expose
 from flask_babelex import gettext as _
 from flask_wtf import FlaskForm
 from invenio_db import db
+from weko_admin.utils import escape_filename
 
 from .api import Indexes
 from .models import IndexStyle
@@ -100,6 +101,7 @@ class IndexEditSettingView(BaseView):
             flash(_('No selected file'))
             return abort(400)
 
+        fp.filename = escape_filename(fp.filename)
         filename = os.path.join(
             current_app.instance_path,
             current_app.config['WEKO_THEME_INSTANCE_DATA_DIR'],

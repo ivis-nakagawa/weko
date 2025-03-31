@@ -537,17 +537,19 @@ angular.module('invenioSearch')
   .filter("sanitize", ['$sce', function ($sce) {
     return function (htmlCode) {
       return $sce.trustAsHtml(htmlCode);
+      // return _.escape(htmlCode); // HTMLをエスケープする場合
+      //HTMLをエスケープしない場合はPython側でsanitize_html_stringをかける
     }
   }])
   .filter("escapeTitle", function () {
     return function (data) {
       if (data){
-        data = escapeString(data);
+        data = removeWeko2SpecialCharacter(data);
       }
       return data;
     }
   })
-  .filter("escapeAuthor", function () {
+  .filter("escapeAuthor", function () {//未使用
     return function (authorData) {
       let tmpAuthorData = JSON.parse(JSON.stringify(authorData))
       return escapeAuthorString(tmpAuthorData);
@@ -564,17 +566,9 @@ function escapeAuthorString(data) {
       data[key] = escapeAuthorString(data[key]);
     })
   } else if (typeof data === 'string') {
-    data = escapeString(data)
+    data = removeWeko2SpecialCharacter(data)
   }
   return data;
-}
-
-function escapeString(data) {
-  data = data
-    .replace(/(^(&EMPTY&,|,&EMPTY&)|(&EMPTY&,|,&EMPTY&)$|&EMPTY&)/g, "")
-    .replace(/[\x00-\x1F\x7F]/g, "")
-    .trim();
-  return data === ',' ? '' : data;
 }
 
 function format_comment(comment) {

@@ -279,10 +279,10 @@ function autocomplete(inp, arr) {
         /*create a DIV element for each matching element:*/
         droplist_show_other_user = document.createElement("DIV");
         /*make the matching letters bold:*/
-        droplist_show_other_user.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-        droplist_show_other_user.innerHTML += arr[i].substr(val.length);
+        droplist_show_other_user.innerHTML = "<strong>" + _.escape(arr[i].substr(0, val.length)) + "</strong>";
+        droplist_show_other_user.innerHTML += _.escape(arr[i].substr(val.length));
         /*insert a input field that will hold the current array item's value:*/
-        droplist_show_other_user.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+        droplist_show_other_user.innerHTML += "<input type='hidden' value='" + _.escape(arr[i]) + "'>";
 
         /*execute a function when someone clicks on the item value (DIV element):*/
         droplist_show_other_user.addEventListener('click', function (e) {
@@ -652,12 +652,26 @@ function validateThumbnails(rootScope, scope, itemSizeCheckFlg, files) {
 
       $scope.onUploadFileContents = function () {
         $rootScope.filesVM.files.forEach(function (file) {
+          // Replace # with %23
+          file.key = escapeFileName(file.key);
+          if (file.name){
+            file.name = escapeFileName(file.name);
+          }
           if (file.replace_version_id) {
             file.key += '?replace_version_id=' + file.replace_version_id;
           }
         });
 
         $rootScope.filesVM.upload();
+
+        $rootScope.$on('invenio.uploader.upload.file.uploaded', function (ev) {
+          $rootScope.filesVM.files.forEach(function (file) {
+            file.key = unescapeFileName(file.key);
+            if (file.name){
+              file.name = unescapeFileName(file.name);
+            }
+          });
+        });
       }
 
       $scope.onRemoveFileContent = function (file) {
@@ -2528,6 +2542,10 @@ function validateThumbnails(rootScope, scope, itemSizeCheckFlg, files) {
       }
 
       $rootScope.$on('invenio.records.loading.stop', function (ev) {
+        // データに"{{}}"が含まれるとエラーが発生する問題の対策(#46627)
+        $rootScope.recordsVM.invenioRecordsModel = replaceZeroWidthSpace(
+          $rootScope.recordsVM.invenioRecordsModel
+        );
         $scope.checkLoadingNextButton();
         $scope.hiddenPubdate();
         $scope.initContributorData();

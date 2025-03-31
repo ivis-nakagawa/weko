@@ -67,7 +67,11 @@ from jsonschema import Draft4Validator
 from sqlalchemy import func as _func
 from sqlalchemy.exc import SQLAlchemyError
 from weko_admin.models import SessionLifetime
-from weko_admin.utils import get_redis_cache, reset_redis_cache
+from weko_admin.utils import (
+    get_redis_cache,
+    reset_redis_cache,
+    convert_newlines,
+)
 from weko_authors.models import Authors
 from weko_authors.utils import check_email_existed
 from weko_deposit.api import WekoDeposit, WekoIndexer, WekoRecord
@@ -276,7 +280,7 @@ def get_journal_info(index_id=0):
 
         cur_lang = current_i18n.language
         journal = Journals.get_journal_by_index_id(index_id)
-        if len(journal) <= 0 or journal.get("is_output") is False:
+        if not journal or len(journal) <= 0 or journal.get("is_output") is False:
             return None
 
         for value in schema_data:
@@ -1208,23 +1212,23 @@ def register_item_metadata(item, root_path, owner, is_gakuninrdm=False):
                 data["deleted_items"] = deleted_items
         return data
 
-    def escape_newline(data):
-        """Replace <br/> in metadata with \n.
+    # def escape_newline(data):
+    #     """Replace <br/> in metadata with \n.
         
-        {"key1":["test<br/>test"]} -> {"key1":["test\ntest"]}
-        :argument
-            data     -- {obj} escape target
-        :return 
-            obj      -- Obj after escaping
-        """
-        if isinstance(data,list):
-            return [escape_newline(d) for d in data]
-        elif isinstance(data,dict):
-            return {d:escape_newline(data[d]) for d in data}
-        elif isinstance(data,str):
-            return data.replace("<br/>","\n")
-        else:
-            return data
+    #     {"key1":["test<br/>test"]} -> {"key1":["test\ntest"]}
+    #     :argument
+    #         data     -- {obj} escape target
+    #     :return 
+    #         obj      -- Obj after escaping
+    #     """
+    #     if isinstance(data,list):
+    #         return [escape_newline(d) for d in data]
+    #     elif isinstance(data,dict):
+    #         return {d:escape_newline(data[d]) for d in data}
+    #     elif isinstance(data,str):
+    #         return data.replace("<br/>","\n")
+    #     else:
+    #         return data
 
     item_id = str(item.get("id"))
     pid = PersistentIdentifier.query.filter_by(
@@ -1243,7 +1247,8 @@ def register_item_metadata(item, root_path, owner, is_gakuninrdm=False):
             "title": item.get("item_title"),
         }
     )
-    new_data = escape_newline(new_data)
+    # new_data = escape_newline(new_data)
+    new_data = convert_newlines(new_data, to_html=False)
     item_status = {
         "index": new_data["path"],
         "actions": "publish",

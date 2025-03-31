@@ -849,9 +849,16 @@ class Indexes(object):
         :param with_deleted: Include deleted index.
         :return: the list of index.
         """
-        for index_id in node_lst:
-            if not index_id:
-                node_lst.remove(index_id)
+        print(f"============================================")
+        print(f"node_lst: {node_lst}")
+        # for index_id in node_lst:
+        #     print(f"--------------------------------")
+        #     print(f"index_id: {index_id}")
+        #     print(f"index_id == '': {index_id == ''}")
+        #     print(f"type(index_id): {type(index_id)}")
+        #     if not index_id:
+        #         node_lst.remove(index_id)
+        print(f"============================================")
 
         recursive_t = cls.recs_query(with_deleted=with_deleted)
         q = db.session.query(recursive_t).filter(

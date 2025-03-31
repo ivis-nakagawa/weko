@@ -68,7 +68,7 @@ from .utils import _get_max_export_items, check_item_is_being_edit, \
     get_list_email, get_list_username, get_ranking, get_user_info_by_email, \
     get_user_info_by_username, get_user_information, get_user_permission, \
     get_workflow_by_item_type_id, hide_form_items, is_schema_include_key, \
-    remove_excluded_items_in_json_schema, sanitize_input_data, save_title, \
+    remove_excluded_items_in_json_schema, save_title, \
     set_multi_language_name, to_files_js, translate_schema_form, \
     translate_validation_message, update_index_tree_for_record, \
     update_json_schema_by_activity_id, update_schema_form_by_activity_id, \
@@ -237,7 +237,7 @@ def iframe_save_model():
         activity_session = session.get('activity_info',{})
         activity_id = activity_session.get('activity_id', None)
         if activity_id:
-            sanitize_input_data(data)
+            # sanitize_input_data(data)
             save_title(activity_id, data)
             activity = WorkActivity()
             activity.upt_activity_metadata(activity_id, json.dumps(data))

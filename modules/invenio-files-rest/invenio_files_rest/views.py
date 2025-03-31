@@ -985,6 +985,8 @@ class ObjectResource(ContentNegotiatedMethodView):
         :param upload_id: The upload ID. (Default: ``None``)
         :returns: A Flask response.
         """
+        print(f"================================================ ObjectResource ================================")
+        print(f"key: {key}")
         if upload_id is not None:
             return self.multipart_uploadpart(bucket, key, upload_id)
         else:

@@ -211,7 +211,7 @@ def test_WekoFilesStats(app, records):
 
 # .tox/c1/bin/pytest --cov=weko_records_ui tests/test_rest.py::test_WekoFilesStats_error -vv -s --cov-branch --cov-report=term --basetemp=/code/modules/weko-search-ui/.tox/c1/tmp
 def test_WekoFilesStats_error(app, records):
-    app.register_blueprint(create_blueprint(app.config['WEKO_RECORDS_UI_CITES_REST_ENDPOINTS']))
+    # app.register_blueprint(create_blueprint(app.config['WEKO_RECORDS_UI_CITES_REST_ENDPOINTS']))
     with app.test_client() as client:
         url = '/v1/records/1/files/helloworld.pdf/stats'
         res = client.get(url)
@@ -273,7 +273,7 @@ def test_WekoFilesGet(app, records):
 
 # .tox/c1/bin/pytest --cov=weko_records_ui tests/test_rest.py::test_WekoFilesGet_error -vv -s --cov-branch --cov-report=term --basetemp=/code/modules/weko-search-ui/.tox/c1/tmp
 def test_WekoFilesGet_error(app, records):
-    app.register_blueprint(create_blueprint(app.config['WEKO_RECORDS_UI_CITES_REST_ENDPOINTS']))
+    # app.register_blueprint(create_blueprint(app.config['WEKO_RECORDS_UI_CITES_REST_ENDPOINTS']))
     with app.test_client() as client:
         url = '/v1/records/1/files/helloworld.pdf'
         res = client.get(url)

@@ -32,6 +32,7 @@ from flask_babelex import gettext as _
 from flask_login import current_user
 from invenio_db import db
 from invenio_i18n.ext import current_i18n
+from weko_admin.utils import sanitize_input_data
 from weko_admin.models import AdminSettings, BillingPermission
 from weko_records.api import ItemsMetadata, ItemTypeEditHistory, \
     ItemTypeNames, ItemTypeProps, ItemTypes, Mapping
@@ -352,9 +353,12 @@ class ItemTypeMetaDataView(BaseView):
         fp = io.BytesIO()
         with ZipFile(fp, 'w', compression=ZIP_DEFLATED) as new_zip:
             # zipファイルにJSON文字列を追加
-            new_zip.writestr("ItemType.json", ItemTypeSchema().dumps(item_types).data.encode().decode('unicode-escape').encode())
-            new_zip.writestr("ItemTypeName.json", ItemTypeNameSchema().dumps(item_type_names).data.encode().decode('unicode-escape').encode())
-            new_zip.writestr("ItemTypeMapping.json", ItemTypeMappingSchema().dumps(item_type_mappings.model).data.encode().decode('unicode-escape').encode())
+            # new_zip.writestr("ItemType.json", ItemTypeSchema().dumps(item_types).data.encode().decode('unicode-escape').encode())
+            # new_zip.writestr("ItemTypeName.json", ItemTypeNameSchema().dumps(item_type_names).data.encode().decode('unicode-escape').encode())
+            # new_zip.writestr("ItemTypeMapping.json", ItemTypeMappingSchema().dumps(item_type_mappings.model).data.encode().decode('unicode-escape').encode())
+            new_zip.writestr("ItemType.json", ItemTypeSchema().dumps(item_types).data.encode('utf-8'))
+            new_zip.writestr("ItemTypeName.json", ItemTypeNameSchema().dumps(item_type_names).data.encode('utf-8'))
+            new_zip.writestr("ItemTypeMapping.json", ItemTypeMappingSchema().dumps(item_type_mappings.model).data.encode('utf-8'))
             json_str = ""
             for item_type_property in item_type_properties :
                 prop_str = ItemTypePropertySchema().dumps(item_type_property).data

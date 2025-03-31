@@ -91,6 +91,7 @@ setup(
             'weko_theme_js = weko_theme.bundles:js',
             'weko_theme_js_top_page = weko_theme.bundles:js_top_page',
             'weko_theme_js_detail_search = weko_theme.bundles:js_detail_search',
+            'weko_theme_js_weko_lib = weko_theme.bundles:js_weko_lib',
             'weko_theme_js_widget_lib = weko_theme.bundles:js_widget_lib',
             'weko_theme_js_widget = weko_theme.bundles:widget_js',
         ],
